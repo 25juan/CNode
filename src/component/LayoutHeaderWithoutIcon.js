@@ -14,6 +14,38 @@ import {
     Right
 } from "native-base" ;
 import Color from "color";
+export const CHeader = ({theme,children})=>{
+    return (
+        <Header
+            iosBarStyle={theme.iosBarStyle}
+            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.5)}
+            style={{backgroundColor:theme.headerBackgroundColor}}>
+            { children }
+        </Header>
+    )
+}
+export const HeaderWithBackIcon = ({theme,children,title,onPress=()=>{}})=>{
+    return (
+        <Header
+            iosBarStyle={theme.iosBarStyle}
+            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.5)}
+            style={{backgroundColor:theme.headerBackgroundColor}}>
+            <Left>
+                <Button onPress={()=>onPress()} transparent>
+                    <Icon style={{color:theme.headerTextColor}} android={"md-arrow-back"} ios={"ios-arrow-back-outline"}/>
+                </Button>
+            </Left>
+            <Body>
+                <Title style={{color:theme.headerTextColor}}>
+                    {title}
+                </Title>
+            </Body>
+            { children }
+        </Header>
+    )
+}
+
+
 export default (props)=>{
     let {
         title="",
@@ -22,16 +54,13 @@ export default (props)=>{
     } = props;
     return (
         <Container>
-            <Header
-                iosBarStyle={theme.iosBarStyle}
-                androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.5)}
-                style={{backgroundColor:theme.headerBackgroundColor}}>
+            <CHeader theme={theme}>
                 <Body>
                     <Title style={{color:theme.headerTextColor}}>
                         {title}
                     </Title>
                 </Body>
-            </Header>
+            </CHeader>
             { children }
         </Container>
     )

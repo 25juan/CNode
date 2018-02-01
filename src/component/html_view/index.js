@@ -40,7 +40,7 @@ export default class SuperWebView extends Component {
                 scalesPageToFit={true}
                 onMessage={this.onMessage.bind(this)}
                 ref={webView => this.webView = webView}
-                source={{html: injectScript(topic), baseUrl: " "}}
+                source={{html: injectScript(topic), baseUrl: ""}}
             />
         )
     }

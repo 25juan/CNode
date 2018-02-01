@@ -13,7 +13,7 @@ import Touchable from "../component/Touchable" ;
 const style = {
     border:{borderBottomWidth:1/PixelRatio.get(),borderBottomColor:"#ddd"},
     row:{flexDirection:"row"},
-    image:{},
+    image:{paddingTop:10,paddingLeft:10},
     column:{flex:1,flexDirection:"column"},
     title:{ fontSize:14,color:"#333",paddingTop:15,paddingBottom:15},
     subTitle:{fontSize:11,color:"#999699",paddingBottom:10,paddingLeft:5},
@@ -38,7 +38,7 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
         <View style={style.row}>
             <View style={style.image}>
                 <Touchable onPress={()=>onLeftPress()}>
-                    <Thumbnail  source={{uri: url}} />
+                    <Thumbnail square  source={{uri: url}} />
                 </Touchable>
             </View>
             <View style={style.flex}>

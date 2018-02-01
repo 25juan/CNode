@@ -3,14 +3,16 @@ import React, {
 } from "react" ;
 import {
     WebView,
-    Linking
+    Linking,
+    Text,
+    View
 } from "react-native" ;
+import Loading from "../ScrollViewLoading";
 import injectScript from "./script";
 
 export default class SuperWebView extends Component {
     webView = null;
     onMessage(e) {
-        console.log(e);
         let data = e.nativeEvent.data;
         let obj = JSON.parse(data);
         typeof this[obj.method] == "function" ? this[obj.method](obj.params) : "";
@@ -30,14 +32,23 @@ export default class SuperWebView extends Component {
        console.log(url);
     }
     render() {
-        let { topic } = this.props;
+        let { topic ,theme} = this.props;
         return (
             <WebView
+                startInLoadingState={true}
+                renderLoading={()=><View style={style.loading}><Loading theme={theme}/></View>}
                 scalesPageToFit={true}
                 onMessage={this.onMessage.bind(this)}
                 ref={webView => this.webView = webView}
                 source={{html: injectScript(topic), baseUrl: " "}}
             />
         )
+    }
+}
+const style = {
+    loading:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center"
     }
 }

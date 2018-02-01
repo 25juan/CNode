@@ -49,7 +49,8 @@ export default class Share extends Component{
     showUser(userId){
     }
     render(){
-        let { share  } = this.props.topics ;
+        let { tab } = this.props ;
+        let list = this.props.topics[tab] ;
         let { theme ,refreshing,loadMoreloading } = this.props.common ;
         return (
             <ScrollView
@@ -65,9 +66,9 @@ export default class Share extends Component{
                     title={"数据刷新中..."}/>}
                 showsVerticalScrollIndicator={false}
             >
-                {share.slice().map((v)=><ListItem onLeftPress={()=>this.showUser(v["author_id"])} onRightPress={()=>this.showArticle(v)} topic={v} key={v.id}/>)}
+                {list.slice().map((v)=><ListItem onLeftPress={()=>this.showUser(v["author_id"])} onRightPress={()=>this.showArticle(v)} topic={v} key={v.id}/>)}
                 {
-                    Platform.OS == "ios"?((!share.length || loadMoreloading)&&  <ScrollViewLoading theme={theme}/>):
+                    Platform.OS == "ios"?((!list.length || loadMoreloading)&&  <ScrollViewLoading theme={theme}/>):
                         (loadMoreloading&&  <ScrollViewLoading theme={theme}/>)
                 }
             </ScrollView>

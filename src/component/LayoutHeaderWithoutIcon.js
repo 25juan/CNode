@@ -55,7 +55,7 @@ export default (props)=>{
     return (
         <Container>
             <CHeader theme={theme}>
-                <Body>
+                <Body style={{alignItems:"center"}}>
                     <Title style={{color:theme.headerTextColor}}>
                         {title}
                     </Title>

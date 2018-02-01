@@ -2,7 +2,7 @@ import {
     observable,
     action
 } from "mobx" ;
-const param = {
+const requestParam = {
     limit:10,
     mdrender:true,
     page:1
@@ -18,13 +18,13 @@ export default class Topics {
     @observable
     job=[] ;
     params = { // 請求參數封裝
-        share:{...param,tab:"share"},
-        ask:{...param,tab:"ask"},
-        job:{...param,tab:"job"}
+        share:{...requestParam,tab:"share"},
+        ask:{...requestParam,tab:"ask"},
+        job:{...requestParam,tab:"job"}
     };
     @action.bound
     async refresh(tab){
-        this.params[tab] = {...this.params[tab],...param} ;
+        this.params[tab] = {...this.params[tab],...requestParam} ;
         let param = this.params[tab] ;
         let url = this.store.url.topic_list ;
         this.store.common.refreshing = true ; // 显示 刷新 框

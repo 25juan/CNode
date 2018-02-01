@@ -3749,6 +3749,12 @@ react-native-keyboard-aware-scroll-view@0.4.2:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
+react-native-material-menu@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-material-menu/-/react-native-material-menu-0.2.4.tgz#d8d982778320df03986e85a42a0af114465fd9b0"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-tab-view@^0.0.74:
   version "0.0.74"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.74.tgz#62c0c882d9232b461ce181d440d683b4f99d1bd8"

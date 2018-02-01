@@ -21,6 +21,22 @@
 1. 退出登录功能(待完成)
 1. 杂项(待完成)
 
+## 项目截图
+#### Android
+![img](./document/image/android/ask.jpg)
+![img](./document/image/android/_d.jpg)
+![img](./document/image/android/job.jpg)
+![img](./document/image/android/job_d.jpg)
+![img](./document/image/android/share.jpg)
+![img](./document/image/android/share_d.jpg)
+
+#### IOS
+![img](./document/image/ios/ask.png)
+![img](./document/image/ios/_d.png)
+![img](./document/image/ios/job.png)
+![img](./document/image/ios/job_d.png)
+![img](./document/image/ios/share.png)
+![img](./document/image/ios/share_d.png)
 
      
     

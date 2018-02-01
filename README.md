@@ -24,27 +24,20 @@
 ## 项目截图
 #### Android
 
-<style>
-    .img{
-        display:inline-block;
-        width:400px;
-        margin-right:20px;
-        margin-bottom:20px;
-    }
-</style>
-<img src="./document/image/android/ask.jpg" class="img">
-<img src="./document/image/android/ask_d.jpg" class="img">
-<img src="./document/image/android/job.jpg" class="img">
-<img src="./document/image/android/job_d.jpg" class="img">
-<img src="./document/image/android/share.jpg" class="img">
-<img src="./document/image/android/share_d.jpg" class="img">
+
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;" src="./document/image/android/ask.jpg" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;" src="./document/image/android/ask_d.jpg" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/job.jpg" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/job_d.jpg" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/share.jpg" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/share_d.jpg" class="img">
 
 #### IOS
-<img src="./document/image/ios/ask.png" class="img">
-<img src="./document/image/ios/ask_d.png" class="img">
-<img src="./document/image/ios/job.png" class="img">
-<img src="./document/image/ios/job_d.png" class="img">
-<img src="./document/image/ios/share.png" class="img">
-<img src="./document/image/ios/share_d.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/ask.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/ask_d.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/job.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/job_d.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/share.png" class="img">
+<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/share_d.png" class="img">
      
     

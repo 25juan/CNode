@@ -9,6 +9,7 @@
     ###### `yarn`
 1. 运行程序
     ###### `react-native run-ios ` or `react-native run-android`
+1. 如果想查看真是数据请将`CNode/src/store/url.js`中的 `let dev = true` 置为true即可
 ## 功能列表
 1. APP启动页(待完成)
 1. 主题列表展示(待完成)

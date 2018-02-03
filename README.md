@@ -2,6 +2,17 @@
 
 由React Native 开发的移动APP,数据接口由 `http://cnodejs.org/` 提供
 ## 使用教程
+1. 三方库列表
+    1. color
+    1. lodash
+    1. lodash
+    1. mobx
+    1. mobx-react
+    1. moment
+    1. native-base
+    1. react-native-easy-toast
+    1. react-native-material-menu
+    1. react-navigation
 
 1. 下载项目
     ###### `git clone git@github.com:25juan/CNode.git`

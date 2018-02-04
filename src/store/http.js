@@ -2,7 +2,8 @@
  * 封装的HTTP 模块
  */
 const filter = (res) => res.json();
-/**  * 该方法是将json 转换成为url拼接的字符串  * @param json { a:1,b:2 } => a=1 & b=2  */ function json2Param(object) {
+/**  * 该方法是将json 转换成为url拼接的字符串  * @param json { a:1,b:2 } => a=1 & b=2  */
+function json2Param(object) {
     var params = [];
     for (var i in object) {
         params.push(i + '=' + object[i]);

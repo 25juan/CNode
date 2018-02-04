@@ -14,30 +14,35 @@ import {
     observer,
     inject
 } from "mobx-react/native";
+import Touchable from "../component/Touchable";
 @inject("common")
-@inject("topics")
+@inject("user")
 @observer
 export default class Mine extends Component{
+    login(){
+
+    }
     render(){
         let theme = this.props.common.theme ;
+        let { loginname , avatar_url  } = this.props.user.user ;
         return (
-            <Container style={{backgroundColor:"#fff"}}>
+            <Container style={styles.white}>
                 <View>
                     { Platform.OS=="ios" && <View style={{height:20,backgroundColor:theme.headerBackgroundColor}}/> /**IOS statusbar 兼容处理*/}
                 </View>
                 <Content padder>
                     <Card>
                         <CardItem>
-                            <Body style={{flexDirection:"row"}}>
-                            <View style={{flex:1,alignItems:"center",justifyContent:"center",height:80}}>
-                                <Text style={{fontSize:24}}>登录</Text>
-                            </View>
-                            <View style={{flex:1,alignItems:"center",justifyContent:"center",height:80  }}>
-                                <Thumbnail
-                                    source={{uri:"https://free.modao.cc/uploads3/images/1548/15483929/raw_1513564115.jpeg"}}
-                                />
-                            </View>
-                            </Body>
+                            <Touchable onPress={()=>this.login()}>
+                                <Body style={styles.row}>
+                                    <View style={styles.center}>
+                                        <Text style={styles.loginText}>{ loginname }</Text>
+                                    </View>
+                                    <View style={styles.center}>
+                                        <Thumbnail source={avatar_url}/>
+                                    </View>
+                                </Body>
+                            </Touchable>
                         </CardItem>
                     </Card>
                     <Card>
@@ -63,5 +68,9 @@ export default class Mine extends Component{
     }
 }
 const styles= {
-    borderBottom:{borderBottomWidth:1,borderBottomColor:"#ededed"}
-}
+    white:{backgroundColor:"#fff"},
+    row:{flexDirection:"row"},
+    borderBottom:{borderBottomWidth:1,borderBottomColor:"#ededed"},
+    center:{flex:1,alignItems:"center",justifyContent:"center",height:80},
+    loginText:{fontSize:24}
+};

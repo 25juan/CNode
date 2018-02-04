@@ -18,7 +18,7 @@ export const CHeader = ({theme,children})=>{
     return (
         <Header
             iosBarStyle={theme.iosBarStyle}
-            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.5)}
+            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.3)}
             style={{backgroundColor:theme.headerBackgroundColor}}>
             { children }
         </Header>
@@ -28,7 +28,7 @@ export const HeaderWithBackIcon = ({theme,children,title,onPress=()=>{}})=>{
     return (
         <Header
             iosBarStyle={theme.iosBarStyle}
-            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.5)}
+            androidStatusBarColor={Color(theme.headerBackgroundColor).darken(0.3)}
             style={{backgroundColor:theme.headerBackgroundColor}}>
             <Left>
                 <Button onPress={()=>onPress()} transparent>

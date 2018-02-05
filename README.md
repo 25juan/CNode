@@ -5,7 +5,6 @@
 1. 三方库列表
     1. color
     1. lodash
-    1. lodash
     1. mobx
     1. mobx-react
     1. moment

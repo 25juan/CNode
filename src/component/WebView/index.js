@@ -4,12 +4,10 @@ import React, {
 import {
     WebView,
     Linking,
-    Text,
     View
 } from "react-native" ;
 import Loading from "../ScrollViewLoading";
-import injectScript from "./script";
-
+import injectScript from "./script" ;
 export default class SuperWebView extends Component {
     webView = null;
     onMessage(e) {
@@ -29,10 +27,11 @@ export default class SuperWebView extends Component {
         })
     }
     openImage(url) {
-       console.log(url);
+        console.log(url);
     }
     render() {
-        let { topic ,theme} = this.props;
+        let { html ,theme} = this.props;
+        let  renderHtml = injectScript(html);
         return (
             <WebView
                 startInLoadingState={true}
@@ -40,7 +39,7 @@ export default class SuperWebView extends Component {
                 scalesPageToFit={true}
                 onMessage={this.onMessage.bind(this)}
                 ref={webView => this.webView = webView}
-                source={{html: injectScript(topic), baseUrl: ""}}
+                source={{html: renderHtml, baseUrl: ""}}
             />
         )
     }
@@ -51,4 +50,4 @@ const style = {
         alignItems:"center",
         justifyContent:"center"
     }
-}
+};

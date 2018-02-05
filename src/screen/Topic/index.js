@@ -1,7 +1,7 @@
 import React,{
     Component
 } from "react" ;
-import SuperWebView from "../component/html_view" ;
+import SuperWebView from "../../component/WebView" ;
 import { Share,Linking } from "react-native";
 import moment from "moment" ;
 import {
@@ -11,14 +11,15 @@ import {
     Button,
     Icon
 } from "native-base";
-import url from "../store/url"
-import { HeaderWithBackIcon as Header } from "../component/LayoutHeaderWithoutIcon";
+import url from "../../store/url" ;
+import injectScript from "./script" ;
+import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
 import {
     observer,
     inject
 } from "mobx-react/native";
 import { observable } from "mobx" ;
-import alert from "../component/Alert" ;
+import alert from "../../component/Alert" ;
 import Menu, { MenuItem } from 'react-native-material-menu';
 import Toast from "react-native-easy-toast" ;
 @inject("common")
@@ -77,8 +78,9 @@ export default class Topic extends Component{
         this.topic = this.parse2Article(article) ;
     }
     render(){
-        let { theme } = this.props.common ;
+        let { theme , markdownStyle} = this.props.common ;
         let topic = this.topic ;
+        let html  = injectScript(topic,markdownStyle) ;
         return (<Col>
                     <Header title={topic.author.loginname} onPress={()=>this.back()} theme={theme}>
                         <Right>
@@ -99,7 +101,7 @@ export default class Topic extends Component{
                             </Menu>
                         </Right>
                     </Header>
-                    <SuperWebView theme={theme} topic={topic}/>
+                    <SuperWebView theme={theme} html={html}/>
                     <Toast ref={(toast)=>this.toast = toast}/>
                 </Col>)
     }

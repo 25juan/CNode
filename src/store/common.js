@@ -8,15 +8,23 @@ import {
     action
 } from "mobx" ;
 import normal from "./theme/normal";
+import markdown_light from "./theme/markdow_light";
 class Common {
     constructor(store){
         this.store = store ;
     }
     @observable
-    themeKey = "normal" ;
+    _theme = "normal" ;
     @computed
-    get theme(){ // 主題
-        return theme[this.themeKey] ;
+    get theme(){ // 获取整个APP的颜色配置
+        return theme[this._theme] ;
+    }
+    @observable
+    _markdownStyle = "markdown_light" ;
+    @computed
+    get markdownStyle(){ // 获取文章详情的的颜色配置
+        console.log(theme[this._markdownStyle]);
+        return theme[this._markdownStyle] ;
     }
     @observable
     loading = false ; // 控制loading框

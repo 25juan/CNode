@@ -32,18 +32,18 @@ export default class Mine extends Component{
                 </View>
                 <Content padder>
                     <Card>
+                        <Touchable onPress={()=>this.login()}>
                         <CardItem>
-                            <Touchable onPress={()=>this.login()}>
-                                <Body style={styles.row}>
-                                    <View style={styles.center}>
-                                        <Text style={styles.loginText}>{ loginname }</Text>
-                                    </View>
-                                    <View style={styles.center}>
-                                        <Thumbnail source={avatar_url}/>
-                                    </View>
-                                </Body>
-                            </Touchable>
+                            <Body style={styles.row}>
+                            <View style={styles.center}>
+                                <Text style={styles.loginText}>{ loginname }</Text>
+                            </View>
+                            <View style={styles.center}>
+                                <Thumbnail source={avatar_url}/>
+                            </View>
+                            </Body>
                         </CardItem>
+                        </Touchable>
                     </Card>
                     <Card>
                         <CardItem style={styles.borderBottom}><Text>我的文章</Text></CardItem>

@@ -17,7 +17,7 @@ import normal from "../store/theme/normal";
 export default class SkinPicker extends Component {
     static navigationOptions={header:null} ;
     setAppTheme(theme){
-        Alert.alert("提示","更改主题会导致整个应用重新加载,是否继续?",[
+        this.props.common._theme !== theme && Alert.alert("提示","更改主题会导致整个应用重新加载,是否继续?",[
             {
                 text:"否",
                 onPress:()=>{}

@@ -23,7 +23,6 @@ class Common {
     _markdownStyle = "markdown_light" ;
     @computed
     get markdownStyle(){ // 获取文章详情的的颜色配置
-        console.log(theme[this._markdownStyle]);
         return theme[this._markdownStyle] ;
     }
     @observable

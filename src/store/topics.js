@@ -47,6 +47,7 @@ export default class Topics {
             obj.authorId = v["author_id"] ;
             obj.id = v.id ;
             obj.before = moment(v["create_at"]).fromNow() ;
+            console.log(v);
             return obj ;
         });
         return data;
@@ -80,7 +81,7 @@ export default class Topics {
             url:url,
             data:params
         });
-        this[`_${params.tab}`] = isRefresh? [...results.data]: [...this[params.tab] , ...results.data ] ;
+        this[`_${params.tab}`] = isRefresh? [...results.data]: [...this[`_${params.tab}`] , ...results.data ] ;
     }
 
 

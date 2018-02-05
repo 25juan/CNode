@@ -19,7 +19,10 @@ const style = {
     subTitle:{fontSize:11,color:"#999699",paddingBottom:10,paddingLeft:5},
     flex:{flex:1},
     icon:{fontSize:10,marginTop: Platform.OS ==="ios"?1:3,color:"#999699"},
-    info:{paddingLeft:15}
+    info:{paddingLeft:15},
+    user:{marginTop:5},
+    userText:{color:"#999699",textAlign:"center",fontSize:14},
+    titleC:{height:73}
 } ;
 export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
     let {
@@ -29,7 +32,8 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
         before,
         visitCount,
         replyCount,
-        authorUrl
+        authorUrl,
+        authorName
     } = topic ;
     let goodStyle = good?{color:"red"}:{color:"#fff",opacity:0} ;
     let topStyle = top?{color:"#80bd01"}:{color:"#fff",opacity:0} ;
@@ -37,14 +41,21 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
         <View style={style.row}>
             <View style={style.image}>
                 <Touchable onPress={()=>onLeftPress()}>
-                    <Thumbnail square  source={{uri: authorUrl}} />
+                    <View>
+                        <Thumbnail square  source={{uri: authorUrl}} />
+                        <View style={style.user}>
+                            <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
+                        </View>
+                    </View>
                 </Touchable>
             </View>
             <View style={style.flex}>
                 <Touchable  onPress={()=>onRightPress()}>
                     <View style={[style.column,style.border,style.info]}>
-                        <View>
-                            <Text numberOfLines={2} style={style.title}>{title}</Text>
+                        <View style={style.titleC}>
+                            <Text numberOfLines={2} style={style.title}>
+                                {title}
+                            </Text>
                         </View>
                         <View style={style.row}>
                             <View style={[style.flex,style.row]}>

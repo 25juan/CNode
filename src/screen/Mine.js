@@ -9,11 +9,11 @@ import {
     Card,Body,Container,Content,
     Row,Col,Thumbnail,Right,Icon,CardItem,Text,Button
 } from "native-base";
+import Touchable from "../component/Touchable" ;
 import {
     observer,
     inject
 } from "mobx-react/native";
-import Touchable from "../component/Touchable";
 @inject("common")
 @inject("user")
 @observer
@@ -56,7 +56,11 @@ export default class Mine extends Component{
                         <CardItem style={styles.borderBottom}><Text>关于CNode</Text></CardItem>
                         <CardItem style={styles.borderBottom}><Text>关于本软件</Text></CardItem>
                         <CardItem style={styles.borderBottom}><Text>消息通知</Text></CardItem>
-                        <CardItem><Text onPress={()=>this.openSkin()}>更换皮肤</Text></CardItem>
+                        <CardItem>
+                            <Touchable onPress={()=>this.openSkin()}>
+                                <Text >更换皮肤</Text>
+                            </Touchable>
+                        </CardItem>
                     </Card>
                     <View>
                         <Button block danger>

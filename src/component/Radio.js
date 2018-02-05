@@ -7,14 +7,15 @@ export default ( { label,checked,onChange,color="#333",disabled=false } )=>{
     let ios = checked?"ios-radio-button-on-outline":"md-radio-button-off" ;
     let disabledStyle = disabled?{ color:"#999699" }:{} ;
     return (
-        <Touchable onPress={()=> !disabled && onChange()}>
-            <View style={style.row}>
-                <Icon style={{fontSize:24,color}} android={android} ios={ios}/><Text style={[style.text,disabledStyle]}>{ label }</Text>
+        <View style={style.row}>
+            <View style={{flex:1}}>
+                <Text style={[style.text,disabledStyle]}>{ label }</Text>
             </View>
-        </Touchable>
+            <Icon onPress={()=> !disabled && onChange()} style={{fontSize:24,color}} android={android} ios={ios}/>
+        </View>
     )
 };
 const style = {
-    row:{flexDirection:"row",alignItems:"center",marginBottom:10},
-    text:{ marginLeft:8,color:"#333" }
+    row:{flexDirection:"row",alignItems:"center"},
+    text:{ marginLeft:8,color:"#333"}
 };

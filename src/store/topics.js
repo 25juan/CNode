@@ -32,8 +32,8 @@ export default class Topics {
     parseDate(list=[]){
         let data = list.map((v)=>{
             let obj = {} ;
-            let url = v.author.avatar_url ;
-            obj.authorName = v.author.loginname ;
+            let url = v.author?v.author.avatar_url :"";
+            obj.authorName = v.author?v.author.loginname:"" ;
             obj.authorUrl = (/^https:|^http:/.test(url) ? url : "https:" + url)  ;
             obj.content = v.content ;
             obj.createAt = moment(v["create_at"]).format("YYYY-MM-DD") ;

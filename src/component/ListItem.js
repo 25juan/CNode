@@ -22,15 +22,14 @@ const style = {
     info:{paddingLeft:15}
 } ;
 export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
-    let url = topic.author.avatar_url ;
-    url = (/^https:|^http:/.test(url) ? url : "https:" + url);
     let {
         good,
         top,
         title,
-        create_at,
-        visit_count,
-        reply_count
+        before,
+        visitCount,
+        replyCount,
+        authorUrl
     } = topic ;
     let goodStyle = good?{color:"red"}:{color:"#fff",opacity:0} ;
     let topStyle = top?{color:"#80bd01"}:{color:"#fff",opacity:0} ;
@@ -38,7 +37,7 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
         <View style={style.row}>
             <View style={style.image}>
                 <Touchable onPress={()=>onLeftPress()}>
-                    <Thumbnail square  source={{uri: url}} />
+                    <Thumbnail square  source={{uri: authorUrl}} />
                 </Touchable>
             </View>
             <View style={style.flex}>
@@ -51,16 +50,16 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
                             <View style={[style.flex,style.row]}>
                                 <Icon name={"ios-calendar-outline"} style={style.icon}/>
                                 <Text numberOfLines={1} style={style.subTitle}>
-                                    { moment(create_at).fromNow() }
+                                    { before }
                                 </Text>
                             </View>
                             <View style={[style.flex,style.row]}>
                                 <Icon name={"ios-bookmarks-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>{visit_count}</Text>
+                                <Text numberOfLines={1} style={style.subTitle}>{visitCount}</Text>
                             </View>
                             <View style={[style.flex,style.row]}>
                                 <Icon name={"ios-chatboxes-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>{reply_count}</Text>
+                                <Text numberOfLines={1} style={style.subTitle}>{replyCount}</Text>
                             </View>
                             <View style={[style.row]}>
                                 <Text numberOfLines={1} style={[style.subTitle,topStyle]}>{"顶"}</Text>

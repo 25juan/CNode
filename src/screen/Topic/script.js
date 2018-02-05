@@ -5,10 +5,10 @@ const header = (topic) => {
                     <p class="title">${topic.title}</p>
                     <div class="topics_info">
                         <div class="flex topics_sub">
-                            阅读量:${topic.visit}
+                            阅读量:${topic.visitCount}
                         </div>
                         <span class="text-right topics_sub">
-                            发表时间: ${topic.create}
+                            发表时间: ${topic.createAt}
                         </span>
                     </div>
                 </div>

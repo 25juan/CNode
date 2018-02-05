@@ -6,6 +6,7 @@ import {
 } from "react-navigation";
 import Tabs from "./tab" ;
 import Topic from "./screen/Topic" ;
+import SkinPicker from "./screen/SkinPicker";
 import {
     observer,
     inject
@@ -20,7 +21,8 @@ export default class StackScreen extends Component {
         const {theme} = this.props.common;
         return StackNavigator({
             Home: {screen: Tabs(theme)},
-            Topic:{screen: Topic}
+            Topic:{screen: Topic},
+            SkinPicker:{screen:SkinPicker}
         })
     }
 

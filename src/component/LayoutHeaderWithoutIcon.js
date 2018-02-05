@@ -24,7 +24,7 @@ export const CHeader = ({theme,children})=>{
         </Header>
     )
 }
-export const HeaderWithBackIcon = ({theme,children,title,onPress=()=>{}})=>{
+export const HeaderWithBackIcon = ({theme,children=[],title,onPress=()=>{}})=>{
     return (
         <Header
             iosBarStyle={theme.iosBarStyle}
@@ -40,7 +40,9 @@ export const HeaderWithBackIcon = ({theme,children,title,onPress=()=>{}})=>{
                     {title}
                 </Title>
             </Body>
-            { children }
+            <Right>
+                { children }
+            </Right>
         </Header>
     )
 }

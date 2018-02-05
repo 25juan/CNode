@@ -1,22 +1,56 @@
 import {
     observable,
-    action
+    action,
+    computed
 } from "mobx" ;
 const requestParam = {
     limit:10,
     mdrender:true,
     page:1
 } ;
+import moment from "moment" ;
 export default class Topics {
     constructor(store){
         this.store = store ;
     }
     @observable
-    share = [];
+    _share = [];
     @observable
-    ask=[] ;
+    _ask=[] ;
     @observable
-    job=[] ;
+    _job=[] ;
+    @computed
+    get share(){
+        return this.parseDate(this._share) ;
+    }
+    get ask(){
+        return this.parseDate(this._ask) ;
+    }
+    get job(){
+        return this.parseDate(this._job) ;
+    }
+    parseDate(list=[]){
+        let data = list.map((v)=>{
+            let obj = {} ;
+            let url = v.author.avatar_url ;
+            obj.authorName = v.author.loginname ;
+            obj.authorUrl = (/^https:|^http:/.test(url) ? url : "https:" + url)  ;
+            obj.content = v.content ;
+            obj.createAt = moment(v["create_at"]).format("YYYY-MM-DD") ;
+            obj.replyCount = v["reply_count"] ;
+            obj.top = v.top ;
+            obj.good = v.good ;
+            obj.lastReplyAt = v["last_reply_at"] ;
+            obj.title = v.title ;
+            obj.visitCount = v["visit_count"] ;
+            obj.tab = v.tab ;
+            obj.authorId = v["author_id"] ;
+            obj.id = v.id ;
+            obj.before = moment(v["create_at"]).fromNow() ;
+            return obj ;
+        });
+        return data;
+    }
     params = { // 請求參數封裝
         share:{...requestParam,tab:"share"},
         ask:{...requestParam,tab:"ask"},
@@ -46,7 +80,7 @@ export default class Topics {
             url:url,
             data:params
         });
-        this[params.tab] = isRefresh? [...results.data]: [...this[params.tab] , ...results.data ] ;
+        this[`_${params.tab}`] = isRefresh? [...results.data]: [...this[params.tab] , ...results.data ] ;
     }
 
 

@@ -2,9 +2,8 @@ import React,{
     Component
 } from "react" ;
 import {
-
     View,
-    Platform,
+    Platform
 } from "react-native";
 import {
     Card,Body,Container,Content,
@@ -19,9 +18,11 @@ import Touchable from "../component/Touchable";
 @inject("user")
 @observer
 export default class Mine extends Component{
-    login(){
-
+    openSkin(){
+        let { navigate } = this.props.navigation ;
+        navigate("SkinPicker");
     }
+    login(){}
     render(){
         let theme = this.props.common.theme ;
         let { loginname , avatar_url  } = this.props.user.user ;
@@ -55,7 +56,7 @@ export default class Mine extends Component{
                         <CardItem style={styles.borderBottom}><Text>关于CNode</Text></CardItem>
                         <CardItem style={styles.borderBottom}><Text>关于本软件</Text></CardItem>
                         <CardItem style={styles.borderBottom}><Text>消息通知</Text></CardItem>
-                        <CardItem><Text>更换皮肤</Text></CardItem>
+                        <CardItem><Text onPress={()=>this.openSkin()}>更换皮肤</Text></CardItem>
                     </Card>
                     <View>
                         <Button block danger>

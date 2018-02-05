@@ -34,7 +34,7 @@ export default class Topic extends Component{
     };
     refresh(){
         let { article } = this.props.navigation.state.params;
-        this.topic = this.parse2Article(article) ;
+        this.topic = article ;
         this.toast.show("刷新成功！");
         this.menu.hide();
     }
@@ -64,42 +64,31 @@ export default class Topic extends Component{
     back(){
         this.props.navigation.goBack();
     }
-    parse2Article(article={}){
-        let topic = {} ;
-        topic.content = article.content || "";
-        topic.title = article.title || "" ;
-        topic.visit =article["visit_count"] || "" ;
-        topic.create = moment(article["create_at"]).format("YYYY-MM-DD") || " " ;
-        topic.author = article.author || {} ;
-        return topic ;
-    }
     componentWillMount(){
         let { article } = this.props.navigation.state.params;
-        this.topic = this.parse2Article(article) ;
+        this.topic = article ;
     }
     render(){
         let { theme , markdownStyle} = this.props.common ;
         let topic = this.topic ;
         let html  = injectScript(topic,markdownStyle) ;
         return (<Col>
-                    <Header title={topic.author.loginname} onPress={()=>this.back()} theme={theme}>
-                        <Right>
-                            <Button onPress={()=>this.share()} transparent>
-                                <Icon style={{color:theme.headerTextColor}} android={"md-share-alt"} ios={"ios-share-alt-outline"}/>
-                            </Button>
-                            <Menu
-                                ref={this.setMenuRef}
-                                button={(
-                                    <Button onPress={()=>this.showMenu()} transparent>
-                                        <Icon style={{color:theme.headerTextColor}} android={"md-more"} ios={"ios-more-outline"}/>
-                                    </Button>
-                                )}
-                            >
-                                <MenuItem onPress={()=>this.refresh()}>刷新</MenuItem>
-                                <MenuItem onPress={()=>this.openBrowser()}>浏览器中打开</MenuItem>
-                                <MenuItem onPress={()=>this.hideMenu()}>收藏</MenuItem>
-                            </Menu>
-                        </Right>
+                    <Header title={topic.authorName} onPress={()=>this.back()} theme={theme}>
+                        <Button onPress={()=>this.share()} transparent>
+                            <Icon style={{color:theme.headerTextColor}} android={"md-share-alt"} ios={"ios-share-alt-outline"}/>
+                        </Button>
+                        <Menu
+                            ref={this.setMenuRef}
+                            button={(
+                                <Button onPress={()=>this.showMenu()} transparent>
+                                    <Icon style={{color:theme.headerTextColor}} android={"md-more"} ios={"ios-more-outline"}/>
+                                </Button>
+                            )}
+                        >
+                            <MenuItem onPress={()=>this.refresh()}>刷新</MenuItem>
+                            <MenuItem onPress={()=>this.openBrowser()}>浏览器中打开</MenuItem>
+                            <MenuItem onPress={()=>this.hideMenu()}>收藏</MenuItem>
+                        </Menu>
                     </Header>
                     <SuperWebView theme={theme} html={html}/>
                     <Toast ref={(toast)=>this.toast = toast}/>

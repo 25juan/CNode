@@ -18,7 +18,7 @@ const style = {
     title:{ fontSize:14,color:"#333",paddingTop:15,paddingBottom:15},
     subTitle:{fontSize:11,color:"#999699",paddingBottom:10,paddingLeft:5},
     flex:{flex:1},
-    icon:{fontSize:10,marginTop: Platform.OS ==="ios"?1:3,color:"#999699"},
+    icon:{fontSize:11,marginTop: 1,color:"#999699"},
     info:{paddingLeft:15},
     user:{marginTop:5},
     userText:{color:"#999699",textAlign:"center",fontSize:14},
@@ -65,7 +65,7 @@ export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
                                 </Text>
                             </View>
                             <View style={[style.flex,style.row]}>
-                                <Icon name={"ios-bookmarks-outline"} style={style.icon}/>
+                                <Icon name={"ios-eye-outline"} style={style.icon}/>
                                 <Text numberOfLines={1} style={style.subTitle}>{visitCount}</Text>
                             </View>
                             <View style={[style.flex,style.row]}>

@@ -18,11 +18,12 @@ import {
 } from "mobx-react/native";
 @inject("common")
 @inject("topics")
+@inject("topic")
 @observer
 export default class Share extends Component{
-    /*async componentDidMount(){
+    async componentDidMount(){
         await this.refresh() ;
-    }*/
+    }
     async refresh(){
         let { tab } = this.props ;
         await this.props.topics.refresh(tab) ;
@@ -43,8 +44,9 @@ export default class Share extends Component{
         await this.props.topics.loadMore(tab) ;
     }
     showArticle(article){
-        let { navigation } = this.props ;
-        navigation.navigate("Topic",{article})
+        let { navigation,topic } = this.props ;
+        topic.getTopicById(article.id);
+        navigation.navigate("Topic") ;
     }
     showUser(authorName){
         let { navigate } = this.props.navigation ;
@@ -58,7 +60,7 @@ export default class Share extends Component{
             <ScrollView
                 scrollEventThrottle={200}
                 onScroll={async (e)=> await this.onScroll(e)}
-                style={{paddingVertical:5,paddingHorizontal:10,backgroundColor:"#fff"}}
+                style={{paddingVertical:5,backgroundColor:"#fff"}}
                 refreshControl={<RefreshControl
                     refreshing={refreshing}
                     onRefresh={async()=>await this.refresh()}

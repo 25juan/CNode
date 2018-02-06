@@ -3,14 +3,7 @@ import React,{
 } from "react" ;
 import SuperWebView from "../../component/WebView" ;
 import { Share,Linking } from "react-native";
-import moment from "moment" ;
-import {
-    Col,
-    Right,
-    Text,
-    Button,
-    Icon
-} from "native-base";
+import { Col,Right,Button,Icon,Text  } from "native-base";
 import url from "../../store/url" ;
 import injectScript from "./script" ;
 import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
@@ -23,6 +16,7 @@ import alert from "../../component/Alert" ;
 import Menu, { MenuItem } from 'react-native-material-menu';
 import Toast from "react-native-easy-toast" ;
 @inject("common")
+@inject("topic")
 @observer
 export default class Topic extends Component{
     toast = null;
@@ -33,9 +27,10 @@ export default class Topic extends Component{
         this.menu = ref;
     };
     refresh(){
-        let { article } = this.props.navigation.state.params;
-        this.topic = article ;
-        this.toast.show("刷新成功！");
+        let { topic,getTopicById } = this.props.topic ;
+        getTopicById(topic.id).then(()=>{
+            this.toast.show("刷新成功！");
+        });
         this.menu.hide();
     }
     share(){
@@ -64,14 +59,10 @@ export default class Topic extends Component{
     back(){
         this.props.navigation.goBack();
     }
-    componentWillMount(){
-        let { article } = this.props.navigation.state.params;
-        this.topic = article ;
-    }
     render(){
         let { theme , markdownStyle} = this.props.common ;
-        let topic = this.topic ;
-        let html  = injectScript(topic,markdownStyle) ;
+        let { topic } = this.props.topic ;
+        let html  = injectScript(topic,markdownStyle);
         return (<Col>
                     <Header title={topic.authorName} onPress={()=>this.back()} theme={theme}>
                         <Button onPress={()=>this.share()} transparent>

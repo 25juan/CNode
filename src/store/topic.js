@@ -4,20 +4,29 @@ import {
     action
 } from "mobx" ;
 import images from "../asserts"
+const base = {
+    loginname:"", // 用户登录名称
+    avatar_url:images.user, //用户头像地址
+    githubUsername:"",
+    create_at:"",
+    score:0,
+    recent_topics:[],
+    recent_replies:[]
+} ;
 export default class {
     constructor(store){
         this.store = store ;
     }
     @observable
     _user = { //用户的基本数据类型
-        loginname:"", // 用户登录名称
-        avatar_url:images.user, //用户头像地址
-        githubUsername:"",
-        create_at:"",
-        score:0,
-        recent_topics:[],
-        recent_replies:[]
+        ...base
     };
+    @observable
+    _topic = {} ; // 主題詳情
+    @computed
+    get topic(){
+        return this.store.utils.parseTopic([this._topic])[0];
+    }
     @observable
     collectTopics = []; // 用户收藏的主题
     @computed
@@ -30,7 +39,6 @@ export default class {
     async getUser(loginname){
         let { http ,url } = this.store ;
         let result = await http.get({url:`${url.user}${loginname}`});
-        console.log(result);
         this._user = result.data;
     }
     @action.bound
@@ -43,6 +51,22 @@ export default class {
     async showUser(loginname = ""){
         await this.getUser(loginname);
         await this.getCollectTopics(loginname);
+    }
+    @action.bound
+    getTopicById(id){
+        let url = this.store.url.topic_detail ;
+        let http = this.store.http ;
+        let data = { accesstoken:this.store.user.accesstoken } ;
+        return http.get({
+            url:`${url}${id}`,
+            data
+        }).then((res)=>{
+            this._topic = res.data ;
+        });
+    }
+    @action.bound
+    reset(){
+        this._user = { ...base } ;
     }
 
 

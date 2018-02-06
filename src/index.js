@@ -7,6 +7,7 @@ import {
 import Tabs from "./tab" ;
 import Topic from "./screen/Topic" ;
 import SkinPicker from "./screen/SkinPicker";
+import User from "./screen/User" ;
 import {
     observer,
     inject
@@ -22,7 +23,8 @@ export default class StackScreen extends Component {
         return StackNavigator({
             Home: {screen: Tabs(theme)},
             Topic:{screen: Topic},
-            SkinPicker:{screen:SkinPicker}
+            SkinPicker:{screen:SkinPicker},
+            User:{screen:User}
         })
     }
 

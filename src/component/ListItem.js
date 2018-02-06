@@ -20,7 +20,7 @@ const style = {
     flex:{flex:1},
     icon:{fontSize:11,marginTop: 1,color:"#999699"},
     info:{paddingLeft:15},
-    user:{marginTop:5},
+    user:{marginTop:5,width:60},
     userText:{color:"#999699",textAlign:"center",fontSize:14},
     titleC:{height:73}
 } ;

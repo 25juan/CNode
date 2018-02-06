@@ -15,6 +15,7 @@ import {
     observer,
     inject
 } from "mobx-react/native";
+import StatusBar from "../component/StatusBar" ;
 @inject("common")
 @inject("user")
 @observer
@@ -29,9 +30,7 @@ export default class Mine extends Component{
         let { loginname , avatar_url  } = this.props.user.user ;
         return (
             <Container style={styles.white}>
-                <View>
-                    { Platform.OS=="ios" && <View style={{height:20,backgroundColor:theme.headerBackgroundColor}}/> /**IOS statusbar 兼容处理*/}
-                </View>
+                <StatusBar theme={theme}/>
                 <ScrollView>
                     <Content padder>
                         <Card>

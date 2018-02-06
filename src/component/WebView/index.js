@@ -35,7 +35,7 @@ export default class SuperWebView extends Component {
         return (
             <WebView
                 startInLoadingState={true}
-                renderLoading={()=><View style={style.loading}><Loading theme={theme}/></View>}
+                renderLoading={()=><Loading cover={true} theme={theme}/>}
                 scalesPageToFit={true}
                 onMessage={this.onMessage.bind(this)}
                 ref={webView => this.webView = webView}
@@ -44,10 +44,3 @@ export default class SuperWebView extends Component {
         )
     }
 }
-const style = {
-    loading:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center"
-    }
-};

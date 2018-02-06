@@ -1,8 +1,8 @@
-const MAINCOLOR = "#0366d6" ;
+const MAINCOLOR = "#333" ;
+const inactiveTintColor = "#ddd";
 const activeTintColor = MAINCOLOR ;
 const headerBackgroundColor = MAINCOLOR ;
 const iosBarStyle = "light-content"; //light-content or dark-content
-const inactiveTintColor = "#333";
 const headerTextColor = "#fff";
 const loadingBackgroundColor = MAINCOLOR ;
 const loadingColor = "#fff" ;

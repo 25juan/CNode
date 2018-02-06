@@ -20,9 +20,9 @@ import {
 @inject("topics")
 @observer
 export default class Share extends Component{
-    async componentDidMount(){
+    /*async componentDidMount(){
         await this.refresh() ;
-    }
+    }*/
     async refresh(){
         let { tab } = this.props ;
         await this.props.topics.refresh(tab) ;
@@ -46,7 +46,9 @@ export default class Share extends Component{
         let { navigation } = this.props ;
         navigation.navigate("Topic",{article})
     }
-    showUser(userId){
+    showUser(authorName){
+        let { navigate } = this.props.navigation ;
+        navigate("User",{authorName});
     }
     render(){
         let { tab } = this.props ;
@@ -66,7 +68,7 @@ export default class Share extends Component{
                     title={"数据刷新中..."}/>}
                 showsVerticalScrollIndicator={false}
             >
-                {list.slice().map((v)=><ListItem onLeftPress={()=>this.showUser(v.authorId)} onRightPress={()=>this.showArticle(v)} topic={v} key={v.id}/>)}
+                {list.slice().map((v)=><ListItem onLeftPress={()=>this.showUser(v.authorName)} onRightPress={()=>this.showArticle(v)} topic={v} key={v.id}/>)}
                 {
                     Platform.OS == "ios"?((!list.length || loadMoreloading)&&  <ScrollViewLoading theme={theme}/>):
                         (loadMoreloading&&  <ScrollViewLoading theme={theme}/>)

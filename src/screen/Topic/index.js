@@ -34,8 +34,8 @@ export default class Topic extends Component{
         this.menu.hide();
     }
     share(){
-        let { article } = this.props.navigation.state.params;
-        let link = url.share+article.id;
+        let { topic } = this.props.topic ;
+        let link = url.share+topic.id;
         Share.share({
             message:link,
             title:"分享该文章",
@@ -43,8 +43,8 @@ export default class Topic extends Component{
         });
     }
     openBrowser(){
-        let { article } = this.props.navigation.state.params;
-        let link = url.share+article.id;
+        let { topic } = this.props.topic ;
+        let link = url.share+topic.id;
         alert("是否在浏览器中打开?",()=>{
             this.hideMenu();
             Linking.openURL(link);

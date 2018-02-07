@@ -4,7 +4,7 @@ import React,{
 import {
     View,
     Platform,
-    ScrollView
+    ScrollView, Linking
 } from "react-native";
 import {
     Card,Body,Container,Content,
@@ -16,15 +16,26 @@ import {
     inject
 } from "mobx-react/native";
 import StatusBar from "../component/StatusBar" ;
+import Toast from "react-native-easy-toast" ;
 @inject("common")
 @inject("user")
 @observer
 export default class Mine extends Component{
+    toast = null ;
     openSkin(){
         let { navigate } = this.props.navigation ;
         navigate("SkinPicker");
     }
     login(){}
+    clearCache(){
+        this.toast.show("缓存清除成功") ;
+    }
+    openCNode(){
+        Linking.openURL("https://cnodejs.org/about");
+    }
+    openSoftware(){
+        Linking.openURL("https://github.com/25juan/CNode");
+    }
     render(){
         let theme = this.props.common.theme ;
         let { loginname , avatar_url  } = this.props.user.user ;
@@ -53,10 +64,15 @@ export default class Mine extends Component{
                             <CardItem><Text>消息通知</Text></CardItem>
                         </Card>
                         <Card>
-                            <CardItem style={styles.borderBottom}><Text>清除缓存</Text></CardItem>
-                            <CardItem style={styles.borderBottom}><Text>关于CNode</Text></CardItem>
-                            <CardItem style={styles.borderBottom}><Text>关于本软件</Text></CardItem>
-                            <CardItem style={styles.borderBottom}><Text>消息通知</Text></CardItem>
+                            <Touchable onPress={()=>this.clearCache()}>
+                                <CardItem style={styles.borderBottom}><Text>清除缓存</Text></CardItem>
+                            </Touchable>
+                            <Touchable onPress={()=>this.openCNode()}>
+                                <CardItem style={styles.borderBottom}><Text>关于CNode</Text></CardItem>
+                            </Touchable>
+                            <Touchable onPress={()=>this.openSoftware()}>
+                                <CardItem style={styles.borderBottom}><Text>关于本软件</Text></CardItem>
+                            </Touchable>
                             <Touchable onPress={()=>this.openSkin()}>
                                 <CardItem>
                                     <Text >更换皮肤</Text>
@@ -70,6 +86,7 @@ export default class Mine extends Component{
                         </View>
                     </Content>
                 </ScrollView>
+                <Toast ref={(toast)=>this.toast = toast}/>
             </Container>
         )
     }

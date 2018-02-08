@@ -20,7 +20,7 @@ import {
 @observer
 export default class StackScreen extends Component {
     componentDidMount() {
-        SplashScreen.hide();
+        setTimeout(()=>SplashScreen.hide(),2000);
     }
     getStackScreen() {
         const {theme} = this.props.common;

@@ -24,12 +24,12 @@ export default class SkinPicker extends Component {
             },
             {
                 text:"是",
-                onPress:()=>{ this.props.common._theme = theme }
+                onPress:()=>{ this.props.common.theme = theme }
             }
         ]);
     }
     setMarkdownTheme(theme){
-        this.props.common._markdownStyle = theme ;
+        this.props.common.markdownStyle = theme ;
     }
     render(){
         let { theme,_theme,_markdownStyle } = this.props.common ;

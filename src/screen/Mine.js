@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import {
     Card, Body, Container, Content,
-    Row, Col, Thumbnail, Right, Icon, CardItem, Text, Button
+    Row, Col, Thumbnail, Right, Icon, CardItem, Text, Button,Switch
 } from "native-base";
 import Touchable from "../component/Touchable" ;
 import {
@@ -31,21 +31,22 @@ export default class Mine extends Component {
 
     login() {
     }
-
+    switchChange(key,value){
+        let common = this.props.common ;
+        common[key] = value ;
+    }
     clearCache() {
         this.toast.show("缓存清除成功");
     }
-
     openCNode() {
         Linking.openURL("https://cnodejs.org/about");
     }
-
     openSoftware() {
         Linking.openURL("https://github.com/25juan/CNode");
     }
-
     render() {
         let theme = this.props.common.theme;
+        let { _tail,_message } = this.props.common ;
         let {loginname, avatar_url} = this.props.user.user;
         return (
             <Container style={styles.white}>
@@ -67,8 +68,20 @@ export default class Mine extends Component {
                     </Card>
                     <Card>
                         <CardItem style={styles.borderBottom}><Text>我的文章</Text></CardItem>
-                        <CardItem style={styles.borderBottom}><Text>我的收藏</Text></CardItem>
-                        <CardItem><Text>消息通知</Text></CardItem>
+                        <CardItem style={styles.borderBottom}>
+                            <Body><Text>小尾巴</Text></Body>
+                            <Right>
+                                <Switch  thumbTintColor={ theme.switchCircleColor } onTintColor = { theme.activeTintColor } value={_tail} onValueChange={(value)=>this.switchChange("tail",value)}/>
+                            </Right>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                                <Text>消息通知</Text>
+                            </Body>
+                            <Right>
+                                <Switch  onTintColor = { theme.activeTintColor } thumbTintColor={ theme.switchCircleColor } value={_message} onValueChange={(value)=>this.switchChange("message",value)}/>
+                            </Right>
+                        </CardItem>
                     </Card>
                     <Card>
                         <Touchable onPress={() => this.clearCache()}>

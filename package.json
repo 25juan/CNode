@@ -18,6 +18,7 @@
     "react-native": "0.52.1",
     "react-native-easy-toast": "^1.0.9",
     "react-native-material-menu": "^0.2.4",
+    "react-native-storage": "^0.2.2",
     "react-navigation": "^1.0.0-beta.27"
   },
   "devDependencies": {

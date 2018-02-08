@@ -9,12 +9,13 @@ import {
     Provider
 } from "mobx-react/native" ;
 import StackScreen from "./src";
-import Store from "./src/store" ;
 import {
     observer
 } from "mobx-react/native";
 import "moment" ;
 import "moment/locale/zh-cn" ;
+import "./src/storage" ; //加载本地缓存
+import Store from "./src/store" ; // 加载全局数据状态管理
 @observer
 export default class App extends Component {
   render() {

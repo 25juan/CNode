@@ -36,19 +36,23 @@
 
 ## 项目截图
 #### Android
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/share.jpg" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/share_d.jpg" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;" src="./document/image/android/ask.jpg" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;" src="./document/image/android/ask_d.jpg" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/job.jpg" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/android/job_d.jpg" class="img">
+<img src="./document/image/android/share.jpg">
+<img  src="./document/image/android/ask.jpg" >
+<img   src="./document/image/android/job.jpg" >
+<img   src="./document/image/android/mine.jpg" >
+<img   src="./document/image/android/detail.jpg" >
+<img   src="./document/image/android/detail2.jpg" >
+<img   src="./document/image/android/theme.jpg" >
+<img   src="./document/image/android/user.jpg" >
 
 #### IOS
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/share.png" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/share_d.png" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/ask.png" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/ask_d.png" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/job.png" class="img">
-<img style="display:inline-block;width:400px;margin-right:20px;margin-bottom:20px;"  src="./document/image/ios/job_d.png" class="img">
+<img src="./document/image/ios/share.jpg">
+<img  src="./document/image/ios/ask.jpg" >
+<img   src="./document/image/ios/job.jpg" >
+<img   src="./document/image/ios/mine.jpg" >
+<img   src="./document/image/ios/detail.jpg" >
+<img   src="./document/image/ios/detail2.jpg" >
+<img   src="./document/image/ios/theme.jpg" >
+<img   src="./document/image/ios/user.jpg" >
      
     

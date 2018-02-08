@@ -12,12 +12,16 @@ import {
     observer,
     inject
 } from "mobx-react/native" ;
+import SplashScreen from 'react-native-splash-screen';
 import {
     Root
 } from "native-base";
 @inject("common")
 @observer
 export default class StackScreen extends Component {
+    componentDidMount() {
+        SplashScreen.hide();
+    }
     getStackScreen() {
         const {theme} = this.props.common;
         return StackNavigator({

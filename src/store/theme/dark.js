@@ -1,14 +1,19 @@
+import Color from "color";
 const MAINCOLOR = "#333" ;
-const inactiveTintColor = "#ddd";
+const loadingBackgroundColor = MAINCOLOR ;
+const rcColor = MAINCOLOR ; //单复选框的颜色
 const activeTintColor = MAINCOLOR ;
 const headerBackgroundColor = MAINCOLOR ;
+const statusBarColor = Color(MAINCOLOR).darken(0.3) ;
+const switchCircleColor = "#eee" ;
+const tabBarUnderlineColor = Color(MAINCOLOR).darken(0.4) ;
 const iosBarStyle = "light-content"; //light-content or dark-content
+const inactiveTintColor = "#ddd";
 const headerTextColor = "#fff";
-const loadingBackgroundColor = MAINCOLOR ;
 const loadingColor = "#fff" ;
-const rcColor = MAINCOLOR ; //单复选框的颜色
 export default {
     MAINCOLOR,
+    switchCircleColor,
     activeTintColor,
     inactiveTintColor,
     headerBackgroundColor,
@@ -16,5 +21,7 @@ export default {
     iosBarStyle,
     loadingColor,
     loadingBackgroundColor,
-    rcColor
+    rcColor,
+    statusBarColor,
+    tabBarUnderlineColor
 }

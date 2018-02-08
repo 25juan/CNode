@@ -46,13 +46,13 @@
 <img   src="./document/image/android/user.jpg" >
 
 #### IOS
-<img src="./document/image/ios/share.jpg">
-<img  src="./document/image/ios/ask.jpg" >
-<img   src="./document/image/ios/job.jpg" >
-<img   src="./document/image/ios/mine.jpg" >
-<img   src="./document/image/ios/detail.jpg" >
-<img   src="./document/image/ios/detail2.jpg" >
-<img   src="./document/image/ios/theme.jpg" >
-<img   src="./document/image/ios/user.jpg" >
+<img src="./document/image/ios/share.png">
+<img  src="./document/image/ios/ask.png" >
+<img   src="./document/image/ios/job.png" >
+<img   src="./document/image/ios/mine.png" >
+<img   src="./document/image/ios/detail.png" >
+<img   src="./document/image/ios/detail2.png" >
+<img   src="./document/image/ios/theme.png" >
+<img   src="./document/image/ios/user.png" >
      
     

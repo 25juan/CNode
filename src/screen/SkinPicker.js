@@ -13,6 +13,7 @@ import {
 import Radio from '../component/Radio';
 import normal from "../store/theme/normal";
 @inject("common")
+@inject("topics")
 @observer
 export default class SkinPicker extends Component {
     static navigationOptions={header:null} ;
@@ -24,7 +25,10 @@ export default class SkinPicker extends Component {
             },
             {
                 text:"是",
-                onPress:()=>{ this.props.common.theme = theme }
+                onPress:()=>{
+                    this.props.topics.isRefresh = false;
+                    this.props.common.theme = theme;
+                }
             }
         ]);
     }

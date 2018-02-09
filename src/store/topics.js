@@ -14,6 +14,8 @@ export default class Topics {
         this.store = store ;
     }
     @observable
+    isRefresh = true ; //换肤刷新数据的标志变量，能够提升渲染性能
+    @observable
     _share = [];
     @observable
     _ask=[] ;
@@ -36,6 +38,10 @@ export default class Topics {
     };
     @action.bound
     async refresh(tab){
+        if(!this.isRefresh){ // 当设置换肤功能的不刷新数据
+            tab === "job" && (this.isRefresh = true); //当最后一个tab渲染完成之后重置标志变量，
+            return ;
+        }
         this.params[tab] = {...this.params[tab],...requestParam} ;
         let param = this.params[tab] ;
         let url = this.store.url.topic_list ;

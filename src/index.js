@@ -17,6 +17,7 @@ import {
     Root
 } from "native-base";
 @inject("common")
+@inject("topics")
 @observer
 export default class StackScreen extends Component {
     componentDidMount() {
@@ -31,7 +32,6 @@ export default class StackScreen extends Component {
             User:{screen:User}
         })
     }
-
     render() {
         const Stack = this.getStackScreen();
         return (

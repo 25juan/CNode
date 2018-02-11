@@ -1,6 +1,6 @@
 import Color from "color";
 const MAINCOLOR = "#37C6C0" ;
-const FabColor = "#5067FF" ;
+const FabColor = "rgb(80,103,255)" ;
 const loadingBackgroundColor = MAINCOLOR ;
 const rcColor = MAINCOLOR ; //单复选框的颜色
 const activeTintColor = MAINCOLOR ;

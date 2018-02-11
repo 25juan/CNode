@@ -744,8 +744,8 @@ body{
             border: none;
             border-radius:4px ;
             text-decoration: none;
-            padding: 7px 12px;
-            font-size: 14px;
+            padding: 10px 12px;
+            font-size: 18px;
         }
         .btn-primary{
             background-color: #5cb85c;

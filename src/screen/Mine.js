@@ -166,7 +166,7 @@ export default class Mine extends Component {
                         </List>
                         <View style={{marginTop:30}}>
                             <Button block danger>
-                                <Text>退出登录</Text>
+                                <Text style={{fontSize:18}}>退出登录</Text>
                             </Button>
                         </View>
                     </Content>

@@ -22,7 +22,7 @@ export default class SuperWebView extends Component {
                 alert("支持打开该链接!")
             } else {
                 Linking.openURL(data).catch(() => {
-                    alert("链接打开失败,请稍后重试.")
+                    console.error("链接打开失败,请稍后重试.")
                 });
             }
         })

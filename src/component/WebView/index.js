@@ -12,8 +12,9 @@ export default class SuperWebView extends Component {
     webView = null;
     onMessage(e) {
         let data = e.nativeEvent.data;
-        let obj = JSON.parse(data);
-        typeof this[obj.method] == "function" ? this[obj.method](obj.params) : "";
+        let { method ,params } = JSON.parse(data);
+        typeof this[method] === "function" ? this[method](params) : "";
+        typeof this.props[method] === "function" ? this.props[method](params) : "";
     }
     openLink(data) {
         Linking.canOpenURL(data).then(supported=>{

@@ -15,4 +15,11 @@ const header = (topic) => {
         </div>
     `
 };
-export default (topic,markdownStyle="") => `${markdownStyle}  ${header(topic)} ${topic.content} `;
+const footer = (topic)=>{
+    return `
+        <div class="btn-container">
+            <button data-href="${topic.link}" class="btn btn-block btn-primary">查看原文</button>
+        </div> 
+    `;
+} ;
+export default (topic,markdownStyle="") => `${markdownStyle}  ${header(topic)} ${topic.content} ${footer(topic)}`;

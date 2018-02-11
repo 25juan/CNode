@@ -26,7 +26,6 @@ export default class SkinPicker extends Component {
             {
                 text:"是",
                 onPress:()=>{
-                    this.props.topics.isRefresh = false;
                     this.props.common.theme = theme;
                 }
             }

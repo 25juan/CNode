@@ -2,8 +2,8 @@ import React,{
     Component
 } from "react" ;
 import SuperWebView from "../../component/WebView" ;
-import { Share,Linking } from "react-native";
-import { Col,Right,Button,Icon,Text  } from "native-base";
+import { Share,Linking,View } from "react-native";
+import { Col,Right,Button,Icon,Text,Fab  } from "native-base";
 import url from "../../store/url" ;
 import injectScript from "./script" ;
 import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
@@ -83,6 +83,13 @@ export default class Topic extends Component{
                     </Header>
                     <SuperWebView theme={theme} html={html}/>
                     <Toast ref={(toast)=>this.toast = toast}/>
+                    <Fab
+                        direction="up"
+                        style={{backgroundColor: theme.FabColor}}
+                        position="bottomRight"
+                        onPress={() =>this.props.navigation.navigate("Comment",{topic})}>
+                        <Icon name="chatbubbles"/>
+                    </Fab>
                 </Col>)
     }
 }

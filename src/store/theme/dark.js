@@ -1,5 +1,6 @@
 import Color from "color";
 const MAINCOLOR = "#333" ;
+const FabColor = "#5067FF" ;
 const loadingBackgroundColor = MAINCOLOR ;
 const rcColor = MAINCOLOR ; //单复选框的颜色
 const activeTintColor = MAINCOLOR ;
@@ -13,6 +14,7 @@ const headerTextColor = "#fff";
 const loadingColor = "#fff" ;
 export default {
     MAINCOLOR,
+    FabColor,
     switchCircleColor,
     activeTintColor,
     inactiveTintColor,

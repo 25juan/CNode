@@ -1,6 +1,6 @@
 const online = "https://cnodejs.org/api/v1";
 const mock = "http://rap.taobao.org/mockjsdata/30481";
-let dev = true;
+let dev = false;
 const urls = {
     topic_list: "/topics", // 主题列表、新规 
     topic_update: "/topics/update", // 编辑主题 
@@ -16,7 +16,8 @@ const urls = {
     mark_all: "/message/mark_all",//全部标记为已读 
     user: "/user/",//个人信息详情 
     token: "/accesstoken",//验证token 
-    share: "https://cnodejs.org/topic/" //分享主題的前綴
+    share: "https://cnodejs.org/topic/", //分享主題的前綴
+    github:"https://github.com/"
 };
 function parse() {
     let prefix = online;

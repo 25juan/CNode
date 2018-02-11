@@ -23,6 +23,7 @@ export default class {
     };
     @observable
     _topic = {} ; // 主題詳情
+
     @computed
     get topic(){
         return this.store.utils.parseTopic([this._topic])[0];

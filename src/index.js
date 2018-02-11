@@ -8,6 +8,7 @@ import Tabs from "./tab" ;
 import Topic from "./screen/Topic" ;
 import SkinPicker from "./screen/SkinPicker";
 import User from "./screen/User" ;
+import Comment from "./screen/Comment";
 import {
     observer,
     inject
@@ -29,7 +30,8 @@ export default class StackScreen extends Component {
             Home: {screen: Tabs(theme)},
             Topic:{screen: Topic},
             SkinPicker:{screen:SkinPicker},
-            User:{screen:User}
+            User:{screen:User},
+            Comment:{screen:Comment}
         })
     }
     render() {

@@ -1,27 +1,4 @@
 export default `
-        <style>
-        .header{
-                border-bottom:1px #ddd solid ;
-                margin-bottom: 15px;
-            }
-          .markdown-text .content{
-            padding:10px 0 ;
-        }
-        .markdown-text .title{
-            text-align:left;
-            font-size:24px ;
-            color: rgba(0,0,0,.6);
-        }
-        .markdown-text .topics_info{
-            display:flex ;
-        }
-        .markdown-text .flex{
-            flex:1 1 auto ;
-        }
-        .markdown-text .topics_sub{
-            color: #999699;
-        }
-    </style>
 <style>
     @font-face {
     font-family: octicons-link;
@@ -723,5 +700,61 @@ export default `
 .markdown-text hr {
     border-bottom-color: #eee;
 }
-</style>   
+</style>
+<style>
+body{
+    overflow-x: hidden;
+}
+    .markdown-text a:active,
+    .markdown-text a:focus,
+    .markdown-text a:hover,
+    .markdown-text a:visited{
+        text-decoration: none;
+    }
+        .header{
+                border-bottom:1px #ddd solid ;
+                margin-bottom: 15px;
+            }
+          .markdown-text .content{
+            padding:10px 0 ;
+        }
+        .markdown-text .title{
+            text-align:left;
+            font-size:24px ;
+            color: rgba(0,0,0,.6);
+        }
+        .markdown-text .topics_info{
+            display:flex ;
+        }
+        .markdown-text .flex{
+            flex:1 1 auto ;
+        }
+        .markdown-text .topics_sub{
+            color: #999699;
+        }
+        .btn-container{
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
+        .btn-container *{
+            box-sizing: border-box;
+        }
+        .btn{
+            -webkit-appearance: button;
+            border: none;
+            border-radius:4px ;
+            text-decoration: none;
+            padding: 7px 12px;
+            font-size: 14px;
+        }
+        .btn-primary{
+            background-color: #5cb85c;
+            color: #fff;
+        }
+        .btn-block{
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    </style>   
 `

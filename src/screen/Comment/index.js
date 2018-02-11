@@ -1,5 +1,4 @@
 import React,{ Component } from "react" ;
-import {  } from "react-native" ;
 import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
 import { Col,Right,Button,Icon,Text,Fab,Container  } from "native-base";
 import {

@@ -35,7 +35,7 @@ export const HeaderWithBackIcon = ({theme,children=[],title,onPress=()=>{}})=>{
                     <Icon style={{color:theme.headerTextColor}} android={"md-arrow-back"} ios={"ios-arrow-back-outline"}/>
                 </Button>
             </Left>
-            <Body>
+            <Body style={{alignItems:"center"}}>
                 <Title style={{color:theme.headerTextColor}}>
                     {title}
                 </Title>

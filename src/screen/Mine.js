@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import {
     Card, Body, Container, Content,
-    Row, Col, Thumbnail, Right, Icon, CardItem, Text, Button,Switch
+    Row, Col, Thumbnail, Right, Icon, CardItem, Text, Button, Switch,
+    List, ListItem, Left,
 } from "native-base";
 import Touchable from "../component/Touchable" ;
 import {
@@ -31,98 +32,145 @@ export default class Mine extends Component {
 
     login() {
     }
-    switchChange(key,value){
-        let common = this.props.common ;
-        common[key] = value ;
+
+    switchChange(key, value) {
+        let common = this.props.common;
+        common[key] = value;
     }
+
     clearCache() {
         this.toast.show("缓存清除成功");
     }
+
     openCNode() {
         Linking.openURL("https://cnodejs.org/about");
     }
+
     openSoftware() {
         Linking.openURL("https://github.com/25juan/CNode");
     }
+
     render() {
         let theme = this.props.common.theme;
-        let { _tail,_message } = this.props.common ;
+        let {_tail, _message} = this.props.common;
         let {loginname, avatar_url} = this.props.user.user;
         return (
             <Container style={styles.white}>
                 <StatusBar theme={theme}/>
-                <Content padder>
-                    <Card>
-                        <Touchable onPress={() => this.login()}>
-                            <CardItem>
-                                <Body style={styles.row}>
-                                <View style={styles.center}>
-                                    <Text style={styles.loginText}>{loginname}</Text>
-                                </View>
-                                <View style={styles.center}>
-                                    <Thumbnail source={avatar_url}/>
-                                </View>
+                <ScrollView>
+                    <Content padder>
+                        <Card>
+                            <Touchable onPress={() => this.login()}>
+                                <CardItem>
+                                    <Body style={styles.row}>
+                                    <View style={styles.center}>
+                                        <Text style={styles.loginText}>{loginname}</Text>
+                                    </View>
+                                    <View style={styles.center}>
+                                        <Thumbnail source={avatar_url}/>
+                                    </View>
+                                    </Body>
+                                </CardItem>
+                            </Touchable>
+                        </Card>
+                        <List>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#F0742B"}} name="bookmarks"/>
+                                </Left>
+                                <Body>
+                                <Text style={styles.menuText}>我的文章</Text>
                                 </Body>
-                            </CardItem>
-                        </Touchable>
-                    </Card>
-                    <Card>
-                        <CardItem style={styles.borderBottom}><Text>我的文章</Text></CardItem>
-                        <CardItem style={styles.borderBottom}>
-                            <Body><Text>小尾巴</Text></Body>
-                            <Right>
-                                <Switch  thumbTintColor={ theme.switchCircleColor } onTintColor = { theme.activeTintColor } value={_tail} onValueChange={(value)=>this.switchChange("tail",value)}/>
-                            </Right>
-                        </CardItem>
-                        <CardItem>
-                            <Body>
-                                <Text>消息通知</Text>
-                            </Body>
-                            <Right>
-                                <Switch  onTintColor = { theme.activeTintColor } thumbTintColor={ theme.switchCircleColor } value={_message} onValueChange={(value)=>this.switchChange("message",value)}/>
-                            </Right>
-                        </CardItem>
-                    </Card>
-                    <Card>
-                        <Touchable onPress={() => this.clearCache()}>
-                            <CardItem style={styles.borderBottom}>
-                                <Body><Text>清除缓存</Text></Body>
-                                <Right>
-                                    <Icon name="ios-arrow-forward-outline"/>
-                                </Right>
-                            </CardItem>
-                        </Touchable>
-                        <Touchable onPress={() => this.openCNode()}>
-                            <CardItem style={styles.borderBottom}>
-                                <Body><Text>关于CNode</Text></Body>
-                                <Right>
-                                    <Icon name="ios-arrow-forward-outline"/>
-                                </Right>
-                            </CardItem>
-                        </Touchable>
-                        <Touchable onPress={() => this.openSoftware()}>
-                            <CardItem style={styles.borderBottom}>
-                                <Body><Text>关于本软件</Text></Body>
-                                <Right>
-                                    <Icon name="ios-arrow-forward-outline"/>
-                                </Right>
-                            </CardItem>
-                        </Touchable>
-                        <Touchable onPress={() => this.openSkin()}>
-                            <CardItem style={styles.borderBottom}>
-                                <Body><Text>更换皮肤</Text></Body>
                                 <Right>
                                     <Icon name={"ios-arrow-forward-outline"}/>
                                 </Right>
-                            </CardItem>
-                        </Touchable>
-                    </Card>
-                    <View>
-                        <Button block danger>
-                            <Text>退出登录</Text>
-                        </Button>
-                    </View>
-                </Content>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#5ECC7F"}} name="link"/>
+                                </Left>
+                                <Body>
+                                <Text style={styles.menuText}>小尾巴</Text>
+                                </Body>
+                                <Right>
+                                    <Switch thumbTintColor={theme.switchCircleColor} onTintColor={theme.activeTintColor}
+                                            value={_tail} onValueChange={(value) => this.switchChange("tail", value)}/>
+                                </Right>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#4995DF"}} name="text"/>
+                                </Left>
+                                <Body>
+                                <Text style={styles.menuText}>消息通知</Text>
+                                </Body>
+                                <Right>
+                                    <Switch onTintColor={theme.activeTintColor} thumbTintColor={theme.switchCircleColor}
+                                            value={_message}
+                                            onValueChange={(value) => this.switchChange("message", value)}/>
+                                </Right>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#48BCD5"}} name="cloud"/>
+                                </Left>
+                                <Touchable onPress={() => this.clearCache()}>
+                                    <Body>
+                                        <Text style={styles.menuText}>清除缓存</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#FF5346"}} name="logo-nodejs"/>
+                                </Left>
+                                <Touchable onPress={() => this.openCNode()}>
+                                    <Body>
+                                    <Text style={styles.menuText}>关于CNode</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#4995DF"}} name="information-circle"/>
+                                </Left>
+                                <Touchable onPress={() => this.openSoftware()}>
+                                    <Body>
+                                    <Text style={styles.menuText}>关于本软件</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#F0742B"}} name="cloudy-night"/>
+                                </Left>
+                                <Touchable onPress={() => this.openSkin()}>
+                                    <Body>
+                                        <Text style={styles.menuText}>更换皮肤</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+                        </List>
+                        <View style={{marginTop:30}}>
+                            <Button block danger>
+                                <Text>退出登录</Text>
+                            </Button>
+                        </View>
+                    </Content>
+                </ScrollView>
                 <Toast ref={(toast) => this.toast = toast}/>
             </Container>
         )
@@ -133,5 +181,6 @@ const styles = {
     row: {flexDirection: "row"},
     borderBottom: {borderBottomWidth: 1, borderBottomColor: "#ededed"},
     center: {flex: 1, alignItems: "center", justifyContent: "center", height: 80},
-    loginText: {fontSize: 24}
+    loginText: {fontSize: 24},
+    menuText:{color:"#333"}
 };

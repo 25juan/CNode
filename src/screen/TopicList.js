@@ -30,25 +30,14 @@ export default class Share extends Component{
         let { tab } = this.props ;
         await this.props.topics.refresh(tab) ;
     }
-    async onScroll(e){
-        let { loadMoreloading } = this.props.common ;
-        const cacheHeight = 120 ; //定义缓冲变量
-        let contentHeight = e.nativeEvent.contentSize.height ;
-        let offsetY = e.nativeEvent.contentOffset.y ;
-        let height = e.nativeEvent.layoutMeasurement.height ;
-        let isLoad = contentHeight && (contentHeight>=offsetY+height) && (contentHeight-cacheHeight<=offsetY+height) ;
-        if(isLoad){
-            await this.loadMore()
-        }
-    }
     async loadMore(){
         let { tab } = this.props ;
         await this.props.topics.loadMore(tab) ;
     }
     showArticle(article){
         let { navigation,topic } = this.props ;
-        topic.getTopicById(article.id);
         navigation.navigate("Topic") ;
+        topic.getTopicById(article.id);
     }
     showUser(authorName){
         let { navigate } = this.props.navigation ;

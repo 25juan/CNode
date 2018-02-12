@@ -11,6 +11,7 @@ export default class {
         o.createAt = moment(_user.create_at||new Date()).format("YYYY-MM-DD") ;
         o.score = _user.score ;
         o.recentTopics = this.parseRecent(_user.recent_topics);
+        o.recentReplies = this.parseRecent(_user.recent_replies);
         return o ;
     }
     parseRecent(list=[]){

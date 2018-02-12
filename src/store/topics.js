@@ -4,7 +4,7 @@ import {
     computed
 } from "mobx" ;
 const requestParam = {
-    limit:10,
+    limit:6,
     mdrender:true,
     page:1
 } ;
@@ -59,7 +59,6 @@ export default class Topics {
             data:params
         });
         this[`_${params.tab}`] = isRefresh? [...results.data]: [...this[`_${params.tab}`] , ...results.data ] ;
-        console.log(params.tab,this[`_${params.tab}`].length);
     }
 
 

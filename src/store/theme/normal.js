@@ -10,7 +10,7 @@ const switchCircleColor = "#eee" ;
 const tabBackgroundColor = MAINCOLOR ;
 const inActiveTabTextColor = "#333";
 const activeTabTextColor = "#fff" ;
-
+const touchableBackgroundColor = MAINCOLOR ;
 const tabBarUnderlineColor = Color(MAINCOLOR).darken(0.4) ;
 const iosBarStyle = "light-content"; //light-content or dark-content
 const inactiveTintColor = "#333";
@@ -19,6 +19,7 @@ const loadingColor = "#fff" ;
 const listViewBackgroundColor = "#fff" ;
 export default {
     MAINCOLOR,
+    touchableBackgroundColor,
     listViewBackgroundColor,
     inActiveTabTextColor,
     activeTabTextColor,

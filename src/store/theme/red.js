@@ -3,6 +3,7 @@ const MAINCOLOR = "#ff0000" ;
 const FabColor = "#ff0000ba" ;
 const loadingBackgroundColor = MAINCOLOR ;
 const rcColor = MAINCOLOR ; //单复选框的颜色
+const touchableBackgroundColor = MAINCOLOR ;
 const activeTintColor = MAINCOLOR ;
 const headerBackgroundColor = MAINCOLOR ;
 const statusBarColor = Color(MAINCOLOR).darken(0.3) ;
@@ -15,6 +16,7 @@ const loadingColor = "#fff" ;
 const listViewBackgroundColor = "#fff" ;
 export default {
     MAINCOLOR,
+    touchableBackgroundColor,
     FabColor,
     listViewBackgroundColor,
     switchCircleColor,

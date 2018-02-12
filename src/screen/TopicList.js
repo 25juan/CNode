@@ -7,7 +7,8 @@ import {
     ActivityIndicator,
     Platform,
     View,
-    Text
+    Text,
+    FlatList
 } from "react-native";
 import ScrollViewLoading  from "../component/ScrollViewLoading" ;
 import ListItem from "../component/ListItem";
@@ -21,6 +22,7 @@ import {
 @inject("topic")
 @observer
 export default class Share extends Component{
+    isOpen = false ;
     async componentDidMount(){
         await this.refresh() ;
     }
@@ -52,31 +54,31 @@ export default class Share extends Component{
         let { navigate } = this.props.navigation ;
         navigate("User",{authorName});
     }
+    _renderFooter(){
+        let { theme ,loadMoreloading } = this.props.common ;
+        if(loadMoreloading){
+            return <ScrollViewLoading theme={theme}/> ;
+        }else{
+            return <View/>
+        }
+    }
     render(){
         let { tab } = this.props ;
         let list = this.props.topics[tab] ;
-        let { theme ,refreshing,loadMoreloading } = this.props.common ;
+        let { theme,refreshing } = this.props.common ;
         return (
-            <ScrollView
-                scrollEventThrottle={2000}
-                onScroll={async (e)=> await this.onScroll(e)}
-                style={{paddingVertical:5,backgroundColor:theme.listViewBackgroundColor}}
-                refreshControl={<RefreshControl
-                    refreshing={refreshing}
-                    onRefresh={async()=>await this.refresh()}
-                    colors={[theme.loadingColor]}
-                    progressBackgroundColor={theme.loadingBackgroundColor}
-                    tintColor={theme.loadingBackgroundColor}
-                    title={"数据刷新中..."}/>}
-                showsVerticalScrollIndicator={false}
-            >
-                {list.slice().map((v)=><ListItem onLeftPress={()=>this.showUser(v.authorName)} onRightPress={()=>this.showArticle(v)} topic={v} key={v.id}/>)}
-                {
-                    Platform.OS == "ios"?((!list.length || loadMoreloading)&&  <ScrollViewLoading theme={theme}/>):
-                        (loadMoreloading&&  <ScrollViewLoading theme={theme}/>)
-                }
-                <View style={{height:20}}/>
-            </ScrollView>
+            <FlatList
+                style={{backgroundColor:theme.listViewBackgroundColor}}
+                data={list}
+                keyExtractor={(item)=>item.id}
+                onEndReached={async()=>this.loadMore()}
+                onEndReachedThreshold={30}
+                refreshing={refreshing}
+                onRefresh={async()=>this.refresh()}
+                initialNumToRender={10}
+                ListFooterComponent={()=>this._renderFooter()}
+                renderItem={({item}) =><ListItem theme={theme} onLeftPress={()=>this.showUser(item.authorName)} onRightPress={()=>this.showArticle(item)} topic={item}/>}
+            />
         )
     }
 }

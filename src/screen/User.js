@@ -2,7 +2,7 @@ import React, {Component} from "react" ;
 import {Text, Container, Body, Title, Thumbnail, Tabs, Tab, TabHeading,Icon} from "native-base" ;
 import {inject, observer} from "mobx-react/native" ;
 import ListItemT, {ListItem} from "../component/ListItem" ;
-import {Linking, View, ScrollView} from "react-native" ;
+import {Linking, View, ScrollView,FlatList} from "react-native" ;
 import StatusBar from "../component/StatusBar" ;
 
 @inject("common")
@@ -40,7 +40,7 @@ export default class extends Component {
     }
     render() {
         let {theme} = this.props.common;
-        let {user} = this.props.topic;
+        let {user,_user} = this.props.topic;
         let uri = user.authorUrl;
         if (typeof uri === "string") {
             uri = {uri};
@@ -75,27 +75,36 @@ export default class extends Component {
                 <Tabs tabBarUnderlineStyle={{backgroundColor: theme.tabBarUnderlineColor}} tabBarPosition={"top"}>
                     <Tab activeTextStyle={style.activeTextStyle} textStyle={style.tabTxt} activeTabStyle={tabStyle}
                          tabStyle={tabStyle} heading={"最近回复"}>
-                        <ScrollView>
-                            {
-                                user.recentTopics.map((v, k) => <ListItem onRightPress={()=>this.showArticle(v.id)} key={k} topic={v}/>)
-                            }
-                        </ScrollView>
+                        <FlatList
+                            style={{backgroundColor:theme.listViewBackgroundColor}}
+                            data={user.recentReplies}
+                            keyExtractor={(item)=>item.id}
+                            refreshing={false}
+                            initialNumToRender={6}
+                            renderItem={({item}) =><ListItem theme={theme} onRightPress={()=>this.showArticle(item.id)} topic={item}/>}
+                        />
                     </Tab>
                     <Tab activeTextStyle={style.activeTextStyle} textStyle={style.tabTxt} activeTabStyle={tabStyle}
                          tabStyle={tabStyle} heading={"最近发帖"}>
-                        <ScrollView>
-                            {
-                                user.recentTopics.map((v, k) => <ListItem onRightPress={()=>this.showArticle(v.id)} key={k} topic={v}/>)
-                            }
-                        </ScrollView>
+                        <FlatList
+                            style={{backgroundColor:theme.listViewBackgroundColor}}
+                            data={user.recentTopics}
+                            keyExtractor={(item)=>item.id}
+                            refreshing={false}
+                            initialNumToRender={6}
+                            renderItem={({item}) =><ListItem theme={theme} onRightPress={()=>this.showArticle(item.id)} topic={item}/>}
+                        />
                     </Tab>
                     <Tab activeTextStyle={style.activeTextStyle} textStyle={style.tabTxt} activeTabStyle={tabStyle}
                          tabStyle={tabStyle} heading={"最近收藏"}>
-                        <ScrollView>
-                            {
-                                user.collectTopics.map((v, k) => <ListItemT onRightPress={()=>this.showArticle(v.id)} key={k} topic={v}/>)
-                            }
-                        </ScrollView>
+                        <FlatList
+                            style={{backgroundColor:theme.listViewBackgroundColor}}
+                            data={user.collectTopics}
+                            keyExtractor={(item)=>item.id}
+                            refreshing={false}
+                            initialNumToRender={6}
+                            renderItem={({item}) =><ListItemT theme={theme} onRightPress={()=>this.showArticle(item.id)} topic={item}/>}
+                        />
                     </Tab>
                 </Tabs>
             </Container>

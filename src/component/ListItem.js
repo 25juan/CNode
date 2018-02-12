@@ -5,7 +5,7 @@ import {
     View,
     Text,
     PixelRatio,
-    Platform
+    Platform,TouchableHighlight
 } from "react-native" ;
 import { Thumbnail,Icon } from "native-base" ;
 import moment from "moment" ;
@@ -28,100 +28,136 @@ const style = {
     goodStyle:{color:"red",borderColor:"red"},
     topStyle:{color:"#80bd01",borderColor:"#80bd01"}
 } ;
-export const ListItem = ({ topic ,onRightPress=()=>{} })=>{
-    let {
-        replyAt,
-        title,
-        authorUrl,
-        authorName
-    } = topic ;
-    return (
-        <View style={style.row}>
-            <View style={style.image}>
-                <View>
-                    <Thumbnail square  source={{uri: authorUrl}} />
-                    <View style={style.user}>
-                        <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
-                    </View>
-                </View>
-            </View>
-            <View style={style.flex}>
-                <Touchable  onPress={()=>onRightPress()}>
-                    <View style={[style.column,style.border,style.info]}>
-                        <View style={style.titleC}>
-                            <Text numberOfLines={2} style={style.title}>
-                                {title}
-                            </Text>
-                        </View>
-                        <View style={style.row}>
-                            <View style={[style.row]}>
-                                <Icon name={"ios-undo-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>
-                                    { replyAt }
-                                </Text>
-                            </View>
-                        </View>
-                    </View>
-                </Touchable>
-            </View>
-        </View>
-    )
-};
-export default ({ topic ,onLeftPress=()=>{},onRightPress=()=>{} })=>{
-    let {
-        good,
-        top,
-        title,
-        before,
-        visitCount,
-        replyCount,
-        authorUrl,
-        authorName
-    } = topic ;
-
-    return (
-        <View style={style.row}>
-            <View style={style.image}>
-                <Touchable onPress={()=>onLeftPress()}>
+export class ListItem extends Component{
+    state = {
+        title:{color:"#333"},
+        subtitle:{color:"#999699"},
+        goodStyle:{},
+        topStyle:{}
+    } ;
+    _onShowUnderlay(){
+        this.setState({
+            title:{color:"#fff"},
+            subtitle:{color:"#fff"},
+            goodStyle:{color:"#fff"},
+            topStyle:{color:"#fff"},
+        });
+    }
+    _onHideUnderlay(){
+        this.setState({
+            title:{color:"#333"},
+            subtitle:{color:"#999699"},
+            topStyle:{},
+            goodStyle:{},
+        });
+    }
+    render(){
+        let { theme ,topic ,onRightPress=()=>{} } = this.props ;
+        let {replyAt,title,authorUrl,authorName} = topic ;
+        return (
+            <View style={style.row}>
+                <View style={style.image}>
                     <View>
                         <Thumbnail square  source={{uri: authorUrl}} />
                         <View style={style.user}>
                             <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
                         </View>
                     </View>
-                </Touchable>
-            </View>
-            <View style={style.flex}>
-                <Touchable  onPress={()=>onRightPress()}>
-                    <View style={[style.column,style.border,style.info]}>
-                        <View style={style.titleC}>
-                            <Text numberOfLines={2} style={style.title}>
-                                {title}
-                            </Text>
-                        </View>
-                        <View style={style.row}>
-                            <View style={[style.flex,style.row]}>
-                                <Icon name={"ios-calendar-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>
-                                    { before }
+                </View>
+                <View style={style.flex}>
+                    <TouchableHighlight onHideUnderlay={()=>this._onHideUnderlay()} onShowUnderlay={()=>this._onShowUnderlay()} underlayColor={theme.touchableBackgroundColor}  onPress={()=>onRightPress()}>
+                        <View style={[style.column,style.border,style.info]}>
+                            <View style={style.titleC}>
+                                <Text numberOfLines={2} style={[style.title,this.state.title]}>
+                                    {title}
                                 </Text>
                             </View>
-                            <View style={[style.flex,style.row]}>
-                                <Icon name={"ios-eye-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>{visitCount}</Text>
-                            </View>
-                            <View style={[style.flex,style.row]}>
-                                <Icon name={"ios-chatboxes-outline"} style={style.icon}/>
-                                <Text numberOfLines={1} style={style.subTitle}>{replyCount}</Text>
+                            <View style={style.row}>
+                                <View style={[style.row]}>
+                                    <Icon name={"ios-undo-outline"} style={[style.icon,this.state.subTitle]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subTitle]}>
+                                        { replyAt }
+                                    </Text>
+                                </View>
                             </View>
                         </View>
-                        <View style={[style.labelC]}>
-                            {good && <Text numberOfLines={1} style={[style.label,style.topStyle]}>{"顶"}</Text>}
-                            { top && <Text numberOfLines={1} style={[style.label,style.goodStyle]}>{"精"}</Text> }
-                        </View>
-                    </View>
-                </Touchable>
+                    </TouchableHighlight>
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
+
+}
+export default class extends Component{
+    state = {
+        title:{color:"#333"},
+        subtitle:{color:"#999699"},
+        goodStyle:{},
+        topStyle:{}
+    } ;
+    _onShowUnderlay(){
+        this.setState({
+            title:{color:"#fff"},
+            subtitle:{color:"#fff"},
+            goodStyle:{color:"#fff"},
+            topStyle:{color:"#fff"},
+        });
+    }
+    _onHideUnderlay(){
+        this.setState({
+            title:{color:"#333"},
+            subtitle:{color:"#999699"},
+            topStyle:{},
+            goodStyle:{},
+        });
+    }
+    render(){
+        let { theme ,topic ,onLeftPress=()=>{},onRightPress=()=>{} } = this.props ;
+        let { good,top,title,before,visitCount,replyCount,authorUrl,authorName } = topic ;
+        return (
+            <View style={style.row}>
+                <View style={style.image}>
+                    <Touchable onPress={()=>onLeftPress()}>
+                        <View>
+                            <Thumbnail square  source={{uri: authorUrl}} />
+                            <View style={style.user}>
+                                <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
+                            </View>
+                        </View>
+                    </Touchable>
+                </View>
+                <View style={style.flex}>
+                    <TouchableHighlight onHideUnderlay={()=>this._onHideUnderlay()} onShowUnderlay={()=>this._onShowUnderlay()} underlayColor={theme.touchableBackgroundColor}  onPress={()=>onRightPress()}>
+                        <View style={[style.column,style.border,style.info]}>
+                            <View style={style.titleC}>
+                                <Text numberOfLines={2} style={[style.title,this.state.title]}>
+                                    {title}
+                                </Text>
+                            </View>
+                            <View style={style.row}>
+                                <View style={[style.flex,style.row]}>
+                                    <Icon name={"ios-calendar-outline"} style={[style.icon,this.state.subtitle]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>
+                                        { before }
+                                    </Text>
+                                </View>
+                                <View style={[style.flex,style.row]}>
+                                    <Icon name={"ios-eye-outline"} style={[style.icon,this.state.subtitle]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>{visitCount}</Text>
+                                </View>
+                                <View style={[style.flex,style.row]}>
+                                    <Icon name={"ios-chatboxes-outline"} style={[style.icon,this.state.subtitle]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>{replyCount}</Text>
+                                </View>
+                            </View>
+                            <View style={[style.labelC]}>
+                                {good && <Text numberOfLines={1} style={[style.label,style.topStyle,this.state.topStyle]}>{"顶"}</Text>}
+                                { top && <Text numberOfLines={1} style={[style.label,style.goodStyle,this.state.goodStyle]}>{"精"}</Text> }
+                            </View>
+                        </View>
+                    </TouchableHighlight>
+                </View>
+            </View>
+        )
+    }
 }

@@ -1,6 +1,7 @@
 import Color from "color";
 const MAINCOLOR = "#333" ;
 const FabColor = "#aaa" ;
+const touchableBackgroundColor = MAINCOLOR ;
 const loadingBackgroundColor = MAINCOLOR ;
 const rcColor = MAINCOLOR ; //单复选框的颜色
 const activeTintColor = MAINCOLOR ;
@@ -15,6 +16,7 @@ const loadingColor = "#fff" ;
 const listViewBackgroundColor = "#fff" ;
 export default {
     MAINCOLOR,
+    touchableBackgroundColor,
     FabColor,
     listViewBackgroundColor,
     switchCircleColor,

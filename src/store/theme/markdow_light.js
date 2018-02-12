@@ -733,7 +733,7 @@ body{
             color: #999699;
         }
         .btn-container{
-            padding: 10px 15px;
+            padding: 15px 5px;
             box-sizing: border-box;
         }
         .btn-container *{

@@ -59,6 +59,7 @@ export default class Topics {
             data:params
         });
         this[`_${params.tab}`] = isRefresh? [...results.data]: [...this[`_${params.tab}`] , ...results.data ] ;
+        console.log(params.tab,this[`_${params.tab}`].length);
     }
 
 

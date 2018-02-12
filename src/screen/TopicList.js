@@ -30,12 +30,12 @@ export default class Share extends Component{
     }
     async onScroll(e){
         let { loadMoreloading } = this.props.common ;
-        const cacheHeight = 80 ; //定义缓冲变量
+        const cacheHeight = 120 ; //定义缓冲变量
         let contentHeight = e.nativeEvent.contentSize.height ;
         let offsetY = e.nativeEvent.contentOffset.y ;
         let height = e.nativeEvent.layoutMeasurement.height ;
         let isLoad = contentHeight && (contentHeight>=offsetY+height) && (contentHeight-cacheHeight<=offsetY+height) ;
-        if(isLoad && !loadMoreloading){
+        if(isLoad){
             await this.loadMore()
         }
     }
@@ -58,9 +58,9 @@ export default class Share extends Component{
         let { theme ,refreshing,loadMoreloading } = this.props.common ;
         return (
             <ScrollView
-                scrollEventThrottle={200}
+                scrollEventThrottle={2000}
                 onScroll={async (e)=> await this.onScroll(e)}
-                style={{paddingVertical:5,backgroundColor:"#fff"}}
+                style={{paddingVertical:5,backgroundColor:theme.listViewBackgroundColor}}
                 refreshControl={<RefreshControl
                     refreshing={refreshing}
                     onRefresh={async()=>await this.refresh()}
@@ -75,6 +75,7 @@ export default class Share extends Component{
                     Platform.OS == "ios"?((!list.length || loadMoreloading)&&  <ScrollViewLoading theme={theme}/>):
                         (loadMoreloading&&  <ScrollViewLoading theme={theme}/>)
                 }
+                <View style={{height:20}}/>
             </ScrollView>
         )
     }

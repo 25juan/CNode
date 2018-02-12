@@ -54,6 +54,11 @@ export default class SkinPicker extends Component {
                                    checked={(_theme ==="dark")}
                                    onChange={() =>  this.setAppTheme("dark")}/>
                         </ListItem>
+                        <ListItem>
+                            <Radio color={theme.rcColor} label='春节红'
+                                   checked={(_theme ==="red")}
+                                   onChange={() =>  this.setAppTheme("red")}/>
+                        </ListItem>
                         <ListItem itemDivider>
                             <Text style={style.headerText}>文章主题设置</Text>
                         </ListItem>

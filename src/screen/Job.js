@@ -15,7 +15,7 @@ import {
 @observer
 export default class Job extends Component{
     render(){
-        let { navigation } = this.props ;
+        let navigation = this.props.screenProps ;
         return (
             <LayoutHeaderWithoutIcon theme = {this.props.common.theme} title={"CNode 社区-招聘"}>
                 <TopicList navigation={navigation} tab={"job"}/>

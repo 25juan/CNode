@@ -6,6 +6,7 @@ import {
 } from "react-navigation";
 import { Icon } from "native-base" ;
 import tabs from "./tab";
+import { observer,inject } from "mobx-react" ;
 const activeTintColor = 'rgb(0, 179, 134)' ;
 let config = {
     tabBarPosition: 'bottom',
@@ -53,7 +54,19 @@ const parseTabs = (routers)=>{
     });
     return tab ;
 };
+@inject("common")
+@observer
+export default class Tabbar extends Component{
+    static navigationOptions = {header: null};
+    render(){
+        config.tabBarOptions = {...config.tabBarOptions,...this.props.common.theme} ;
+        let Tab = TabNavigator(parseTabs(tabs),config);
+        return <Tab screenProps={this.props.navigation}/>
+    }
+}
+
+/*
 export default (theme)=>{
     config.tabBarOptions = {...config.tabBarOptions,...theme} ;
     return TabNavigator(parseTabs(tabs),config);
-}
+}*/

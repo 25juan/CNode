@@ -12,7 +12,7 @@ import {
 @observer
 export default class Ask extends Component{
     render(){
-        let { navigation } = this.props ;
+        let navigation = this.props.screenProps ;
         return (
             <LayoutHeaderWithoutIcon theme = {this.props.common.theme} title={"CNode 社区-提问"}>
                 <TopicList navigation={navigation} tab={"ask"}/>

@@ -18,46 +18,42 @@ import {
 } from "mobx-react/native";
 import StatusBar from "../component/StatusBar" ;
 import Toast from "react-native-easy-toast" ;
-
 @inject("common")
 @inject("user")
 @observer
 export default class Mine extends Component {
     toast = null;
-
     openSkin() {
-        let {navigate} = this.props.navigation;
+        let {navigate} = this.props.screenProps;
         navigate("SkinPicker");
     }
     switchChange(key, value) {
         let common = this.props.common;
         common[key] = value;
     }
-
     clearCache() {
         this.toast.show("缓存清除成功");
     }
-
     openCNode() {
         Linking.openURL("https://cnodejs.org/about");
     }
-
     openSoftware() {
         Linking.openURL("https://github.com/25juan/CNode");
     }
     login() {
+
     }
     showMyTopic(){
         let { login } = this.props.user;
-        login?this.props.navigation.navigate("Mine"):this.toast.show("请登录");
+        login?this.props.screenProps.navigate("Mine"):this.toast.show("请登录");
     }
     create(){
         let { login } = this.props.user;
-        login?this.props.navigation.navigate("WriteTopic"):this.toast.show("请登录");
+        login?this.props.screenProps.navigate("WriteTopic"):this.toast.show("请登录");
     }
     showNews(){
         let { login } = this.props.user;
-        login?this.props.navigation.navigate("Message"):this.toast.show("请登录");
+        login?this.props.screenProps.navigate("Message"):this.toast.show("请登录");
     }
     render() {
         let theme = this.props.common.theme;

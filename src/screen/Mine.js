@@ -9,7 +9,7 @@ import {
 import {
     Card, Body, Container, Content,
     Row, Col, Thumbnail, Right, Icon, CardItem, Text, Button, Switch,
-    List, ListItem, Left,
+    List, ListItem, Left,Fab
 } from "native-base";
 import Touchable from "../component/Touchable" ;
 import {
@@ -29,10 +29,6 @@ export default class Mine extends Component {
         let {navigate} = this.props.navigation;
         navigate("SkinPicker");
     }
-
-    login() {
-    }
-
     switchChange(key, value) {
         let common = this.props.common;
         common[key] = value;
@@ -49,7 +45,20 @@ export default class Mine extends Component {
     openSoftware() {
         Linking.openURL("https://github.com/25juan/CNode");
     }
-
+    login() {
+    }
+    showMyTopic(){
+        let { login } = this.props.user;
+        login?this.props.navigation.navigate("Mine"):this.toast.show("请登录");
+    }
+    create(){
+        let { login } = this.props.user;
+        login?this.props.navigation.navigate("WriteTopic"):this.toast.show("请登录");
+    }
+    showNews(){
+        let { login } = this.props.user;
+        login?this.props.navigation.navigate("Message"):this.toast.show("请登录");
+    }
     render() {
         let theme = this.props.common.theme;
         let {_tail, _message} = this.props.common;
@@ -78,13 +87,42 @@ export default class Mine extends Component {
                                 <Left>
                                     <Icon style={{color:"#F0742B"}} name="bookmarks"/>
                                 </Left>
-                                <Body>
-                                <Text style={styles.menuText}>我的文章</Text>
-                                </Body>
+                                <Touchable onPress={() => this.showMyTopic()}>
+                                    <Body>
+                                        <Text style={styles.menuText}>我的文章</Text>
+                                    </Body>
+                                </Touchable>
                                 <Right>
                                     <Icon name={"ios-arrow-forward-outline"}/>
                                 </Right>
                             </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#FF5346"}} name="create"/>
+                                </Left>
+                                <Touchable onPress={() => this.create()}>
+                                    <Body>
+                                    <Text style={styles.menuText}>发布文章</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+                            <ListItem icon>
+                                <Left>
+                                    <Icon style={{color:"#48BCD5"}} name="chatbubbles"/>
+                                </Left>
+                                <Touchable onPress={() => this.showNews()}>
+                                    <Body>
+                                        <Text style={styles.menuText}>我的消息</Text>
+                                    </Body>
+                                </Touchable>
+                                <Right>
+                                    <Icon name={"ios-arrow-forward-outline"}/>
+                                </Right>
+                            </ListItem>
+
                             <ListItem icon>
                                 <Left>
                                     <Icon style={{color:"#5ECC7F"}} name="link"/>

@@ -11,7 +11,6 @@ import {
     observer,inject
 } from "mobx-react/native" ;
 import Radio from '../component/Radio';
-import normal from "../store/theme/normal";
 @inject("common")
 @inject("topics")
 @observer

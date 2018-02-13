@@ -15,9 +15,11 @@ export default class Fetch {
     constructor(store) {
         this.store = store;
     }
-
     async ajax(url, params) {
-        return await fetch(url, params).then(filter)
+        return await fetch(url, params).then(filter).catch((e)=>{
+            this.store.common.networkError = true ;//显示toast
+            this.store.common.networkError = false ;//重置标志位
+        });
     }
     async get(config) {
         let {url, data = {}} = config;

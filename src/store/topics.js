@@ -50,7 +50,6 @@ export default class Topics {
         let url = this.store.url.topic_list ;
         this.store.common.loadMoreloading = true ; // 显示 刷新 框
         await this.getTopics(url,param) ;
-        this.store.common.loadMoreloading = false ; // 关闭 刷新 框
     }
     @action.bound
     async getTopics(url,params={},isRefresh){

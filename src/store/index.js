@@ -12,8 +12,8 @@ class Store {
     constructor(){
         this.url = url;
         this.utils = new Utils(this) ;
-        this.http = new Http(this);
         this.common = new Common(this);
+        this.http = new Http(this);
         this.topics = new Topics(this);
         this.user = new User(this);
         this.topic = new Topic(this);

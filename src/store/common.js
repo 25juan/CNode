@@ -7,7 +7,6 @@ import {
     computed,
     action
 } from "mobx" ;
-import normal from "./theme/normal";
 import markdown_light from "./theme/markdow_light";
 let storage = global._storage ;
 class Common {
@@ -18,6 +17,8 @@ class Common {
         storage.load({key: 'theme'}).then((res)=>this._theme = res).catch(()=>{});
         storage.load({key: 'markdownStyle'}).then((res)=>this._markdownStyle = res).catch(()=>{});
     }
+    @observable
+    networkError = false ;
     @observable
     _tail = true ;
     set tail(value){

@@ -46,6 +46,9 @@ export default class Mine extends Component {
             this.props.screenProps.navigate("Login")
         }
     }
+    logout(){
+        this.props.user.deleteUser() ;
+    }
     showMyTopic(){
         let { login,user:{authorName} } = this.props.user;
         login?this.props.screenProps.navigate("Mine",{authorName}):this.toast.show("请登录");
@@ -202,7 +205,7 @@ export default class Mine extends Component {
                             </ListItem>
                         </List>
                         <View style={{marginTop:30}}>
-                            <Button block danger>
+                            <Button onPress={()=>this.logout()} block danger>
                                 <Text style={{fontSize:18}}>退出登录</Text>
                             </Button>
                         </View>

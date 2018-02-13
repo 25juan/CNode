@@ -4,9 +4,12 @@ import {
     action
 } from "mobx";
 import images from "../asserts"
+let storage = global._storage ;
+const defaultUser = { id:"",loginname:"登录",avatar_url:images.user,accesstoken:"" } ;
 export default class {
     constructor(store){
         this.store = store ;
+        storage.load({key: 'user'}).then((res)=>this._user = res).catch(()=>{});
     }
     @computed
     get login(){// 检测用户是否登录
@@ -21,7 +24,7 @@ export default class {
         return { id,authorName:loginname, authorUrl:avatar_url,token: accesstoken} ;
     }
     @observable
-    _user = { id:"",loginname:"登录",avatar_url:images.user,accesstoken:"" } ;
+    _user = {...defaultUser} ;
     @action.bound
     async validateAccessToken(accesstoken){
         let { token } = this.store.url;
@@ -30,7 +33,14 @@ export default class {
             delete data.success ;
             data.accesstoken = accesstoken ;
             this._user = data ;
+            storage.save({key: 'user',data: data}); //登录信息持久化
         }
+    }
+    @action.bound
+    deleteUser(){
+        storage.remove({key: 'user'}).then((res)=>{
+            this._user = {...defaultUser} ;
+        });//删除登录信息
     }
     @action.bound
     async saveTopic(topic){

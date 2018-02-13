@@ -48,6 +48,9 @@ export default class extends Component{
             <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
                 <Loading loading={this.loading} theme={theme}/>
                 <HeaderWithBackIcon onPress={()=>this.back()} title={"登录"} theme={theme}>
+                    <Button onPress={()=>{}} transparent>
+                        <Icon style={{color:theme.headerTextColor}} name={"qr-scanner"}/>
+                    </Button>
                     <Button onPress={async ()=>await this.submit()} transparent>
                         <Icon style={{color:theme.headerTextColor}} name={"send"}/>
                     </Button>

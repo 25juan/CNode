@@ -4,7 +4,9 @@ import { Modal ,View} from "react-native";
 export default class extends Component{
     render(){
         return (
-            <Modal visible={this.props.loading} transparent={true}>
+            <Modal
+                onRequestClose={()=>{}}
+                visible={this.props.loading} transparent={true}>
                 <View style={{flex:1,alignContent:"center",justifyContent:"center",backgroundColor:"rgba(0,0,0,0.2)"}}>
                     <View>
                         <ScrollViewLoading textColor={"#fff"} {...this.props}/>

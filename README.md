@@ -1,6 +1,8 @@
 # CNode
 
 由React Native 开发的移动APP,数据接口由 `http://cnodejs.org/` 提供
+## 注意
+在运行debug模式的apk可能会比较，但是在真机上运行release版本不会出现这种情况 
 ## 使用教程
 1. 三方库列表
     1. color

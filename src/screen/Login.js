@@ -1,5 +1,5 @@
 import React,{ Component } from "react" ;
-import { View } from "react-native" ;
+import {Linking, View} from "react-native" ;
 import { HeaderWithBackIcon } from "../component/LayoutHeaderWithoutIcon"
 import { Container,Content,Form,Item,Label,Input,Button,Icon,Row,Text } from "native-base" ;
 import {inject,observer  } from "mobx-react" ;
@@ -42,6 +42,17 @@ export default class extends Component{
             this.back()
         }
     }
+    openLink(link){
+        Linking.canOpenURL(link).then(supported=>{
+            if (!supported) {
+                alert("支持打开该链接!")
+            } else {
+                Linking.openURL(link).catch(() => {
+                    console.error("链接打开失败,请稍后重试.")
+                });
+            }
+        })
+    }
     render(){
         let { theme } = this.props.common ;
         return  (
@@ -68,7 +79,7 @@ export default class extends Component{
                     <View style={{marginTop:15}}>
                         <Text style={style.text}>
                             关于accesstoken,请登录
-                            <Text style={[style.text,style.link]}>https://cnodejs.org</Text>
+                            <Text onPress={()=>this.openLink("https://cnodejs.org")} style={[style.text,style.link]}>https://cnodejs.org</Text>
                             官网之后在
                             <Text style={[style.text,style.setting]}>设置</Text>
                             页面中寻找accesstoken

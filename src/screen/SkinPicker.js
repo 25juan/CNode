@@ -17,18 +17,7 @@ import Radio from '../component/Radio';
 export default class SkinPicker extends Component {
     static navigationOptions={header:null} ;
     setAppTheme(theme){
-        this.props.common._theme !== theme && Alert.alert("提示","更改主题会导致整个应用重新加载,是否继续?",[
-            {
-                text:"否",
-                onPress:()=>{}
-            },
-            {
-                text:"是",
-                onPress:()=>{
-                    this.props.common.theme = theme;
-                }
-            }
-        ]);
+        this.props.common.theme = theme;
     }
     setMarkdownTheme(theme){
         this.props.common.markdownStyle = theme ;
@@ -36,7 +25,7 @@ export default class SkinPicker extends Component {
     render(){
         let { theme,_theme,_markdownStyle } = this.props.common ;
         return (
-            <Container style={style.white}>
+            <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
                 <HeaderWithBackIcon onPress={()=>{this.props.navigation.goBack()}} theme={theme} title={"皮肤设置"}/>
                 <Content>
                     <List>

@@ -6,18 +6,18 @@ import {
     ActivityIndicator,
     Text, Platform
 } from "react-native" ;
-const Loading = ({ theme })=>{
+const Loading = ({ theme,textColor="#999699" })=>{
     return (
         <View style={{flexDirection:"row",alignItems:"center",justifyContent:"center"}}>
             <ActivityIndicator style={{marginTop:10}} animating={true} color={theme.loadingBackgroundColor}/>
-            <Text style={{marginTop:9,marginLeft:5,color:"#999699"}}>数据加载中...</Text>
+            <Text style={{marginTop:9,marginLeft:5,color:textColor}}>数据加载中...</Text>
         </View>
     )
 } ;
-export default ({theme,cover=false})=>{
+export default ({theme,cover=false,textColor})=>{
     if(cover){
-        return <View style={style.loading}><Loading theme={ theme}/></View>
+        return <View  style={style.loading}><Loading textColor={textColor} theme={ theme}/></View>
     }
-    return <Loading theme={theme}/>
+    return <Loading textColor={textColor} theme={theme}/>
 }
 const style = {loading:{flex:1,alignItems:"center",justifyContent:"center"}}

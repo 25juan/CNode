@@ -41,11 +41,14 @@ export default class Mine extends Component {
         Linking.openURL("https://github.com/25juan/CNode");
     }
     login() {
-
+        let { login } = this.props.user ;
+        if(!login){
+            this.props.screenProps.navigate("Login")
+        }
     }
     showMyTopic(){
-        let { login } = this.props.user;
-        login?this.props.screenProps.navigate("Mine"):this.toast.show("请登录");
+        let { login,user:{authorName} } = this.props.user;
+        login?this.props.screenProps.navigate("Mine",{authorName}):this.toast.show("请登录");
     }
     create(){
         let { login } = this.props.user;
@@ -58,9 +61,9 @@ export default class Mine extends Component {
     render() {
         let theme = this.props.common.theme;
         let {_tail, _message} = this.props.common;
-        let {loginname, avatar_url} = this.props.user.user;
+        let {authorName, authorUrl} = this.props.user.user;
         return (
-            <Container style={styles.white}>
+            <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
                 <StatusBar theme={theme}/>
                 <ScrollView>
                     <Content padder>
@@ -69,10 +72,10 @@ export default class Mine extends Component {
                                 <CardItem>
                                     <Body style={styles.row}>
                                     <View style={styles.center}>
-                                        <Text style={styles.loginText}>{loginname}</Text>
+                                        <Text style={styles.loginText}>{authorName}</Text>
                                     </View>
                                     <View style={styles.center}>
-                                        <Thumbnail source={avatar_url}/>
+                                        <Thumbnail source={authorUrl}/>
                                     </View>
                                     </Body>
                                 </CardItem>

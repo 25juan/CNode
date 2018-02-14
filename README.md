@@ -85,7 +85,7 @@ A: 在使用webview 的时候，可以先把数据准备好(异步)然后再打�
 。但是能够用RN 解决的尽量不用webview,毕竟会影响用户体验性的。
 #### Q: 下载 ```gradle-wrapper.jar``` 慢 ?
 A: 将 ```android\gradle\wrapper\gradle-wrapper.properties``` 上面的文件通过迅雷下载下来，然后将 distributionUrl 指向本地的文件
-####Q: ios下配置启动图标和启动屏之后运行`react-native run-ios`没有生效?
+#### Q: ios下配置启动图标和启动屏之后运行`react-native run-ios`没有生效?
 A: 删除项目 ```ios``` 文件夹下的build 文件夹，当通过xcode 改变了底层的代码的时候，如：app 图标，app 的启动屏应该重新build 
 
 

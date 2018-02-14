@@ -50,8 +50,8 @@ export default class Mine extends Component {
         this.props.user.deleteUser() ;
     }
     showMyTopic(){
-        let { login,user:{authorName} } = this.props.user;
-        login?this.props.screenProps.navigate("Mine",{authorName}):this.toast.show("请登录");
+        let { login,user:{ authorName } } = this.props.user;
+        login?this.props.screenProps.navigate("User",{authorName}):this.toast.show("请登录");
     }
     create(){
         let { login } = this.props.user;
@@ -61,10 +61,19 @@ export default class Mine extends Component {
         let { login } = this.props.user;
         login?this.props.screenProps.navigate("Message"):this.toast.show("请登录");
     }
+    _renderLogoutBtn(){
+        let { login } = this.props.user;
+        return login?(<View style={{marginTop:30}}>
+            <Button onPress={()=>this.logout()} block danger>
+                <Text style={{fontSize:18}}>退出登录</Text>
+            </Button>
+        </View>): <View/>
+    }
     render() {
         let theme = this.props.common.theme;
         let {_tail, _message} = this.props.common;
         let {authorName, authorUrl} = this.props.user.user;
+
         return (
             <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
                 <StatusBar theme={theme}/>
@@ -204,11 +213,9 @@ export default class Mine extends Component {
                                 </Right>
                             </ListItem>
                         </List>
-                        <View style={{marginTop:30}}>
-                            <Button onPress={()=>this.logout()} block danger>
-                                <Text style={{fontSize:18}}>退出登录</Text>
-                            </Button>
-                        </View>
+                        {
+                            this._renderLogoutBtn()
+                        }
                     </Content>
                 </ScrollView>
                 <Toast ref={(toast) => this.toast = toast}/>

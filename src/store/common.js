@@ -21,6 +21,10 @@ class Common {
     networkError = false ;
     @observable
     _tail = true ;
+    @computed
+    get tail(){
+        return this._tail?`    [来自react native cnode](https://github.com/25juan/CNode)`:"" ;
+    }
     set tail(value){
         storage.save({key: 'tail',data: value});
         this._tail = value ;

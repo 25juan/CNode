@@ -41,6 +41,7 @@ const style = `<style>
         .markdown-text .topics_sub{
             font-size: 12px;
             margin-top: 7px;
+            font-weight: bold;
         }
         .topics_sub.authorname *{
             color: #999699;

@@ -46,6 +46,7 @@ export default class {
     async saveTopic(topic){
         let token = this.user.token ;
         topic.accesstoken = token ;
+        topic.content = topic.content+ this.store.common.tail ;
         let { topic_list } = this.store.url;
         return this.store.http.post({url:topic_list,data:topic}) ;
     }

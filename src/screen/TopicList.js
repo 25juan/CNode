@@ -61,10 +61,10 @@ export default class Share extends Component{
                 data={list}
                 keyExtractor={(item)=>item.id}
                 onEndReached={async()=>this.loadMore()}
-                onEndReachedThreshold={30}
+                onEndReachedThreshold={1}
                 refreshing={refreshing}
                 onRefresh={async()=>this.refresh()}
-                initialNumToRender={10}
+                initialNumToRender={8}
                 ListFooterComponent={()=>this._renderFooter()}
                 renderItem={({item}) =><ListItem theme={theme} onLeftPress={()=>this.showUser(item.authorName)} onRightPress={()=>this.showArticle(item)} topic={item}/>}
             />

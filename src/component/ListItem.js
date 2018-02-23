@@ -66,12 +66,6 @@ export class ListItem extends Component{
 
 }
 export default class extends Component{
-    state = {
-        title:{color:"#333"},
-        subtitle:{color:"#999699"},
-        goodStyle:{},
-        topStyle:{}
-    } ;
     render(){
         let { topic ,onLeftPress=()=>{},onRightPress=()=>{} } = this.props ;
         let { good,top,title,before,visitCount,replyCount,authorUrl,authorName } = topic ;

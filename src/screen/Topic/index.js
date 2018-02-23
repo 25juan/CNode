@@ -29,7 +29,7 @@ export default class Topic extends Component{
     refresh(){
         let { topic,getTopicById } = this.props.topic ;
         getTopicById(topic.id).then(()=>{
-            this.toast.show("刷新成功！");
+            this.toast.show("数据刷新成功！");
         });
         this.menu.hide();
     }

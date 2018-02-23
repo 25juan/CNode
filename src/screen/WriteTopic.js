@@ -67,7 +67,9 @@ export default class extends Component{
                         <Form>
                             <Item stackedLabel>
                                 <Label>标题</Label>
-                                <Input onChangeText={(text) => this.form.title = text}
+                                <Input
+                                    multiline={true}
+                                    onChangeText={(text) => this.form.title = text}
                                        value={this.form.title}/>
                             </Item>
                             <Item>
@@ -93,7 +95,6 @@ export default class extends Component{
                                 <Input
                                     onChangeText={(text) => this.form.content = text}
                                     value={this.form.content}
-                                    style={{minHeight:300}}
                                     multiline={true} />
                             </Item>
                         </Form>

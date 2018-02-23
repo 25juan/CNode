@@ -57,12 +57,30 @@ export default class {
     getTopicById(id){
         let url = this.store.url.topic_detail ;
         let http = this.store.http ;
-        let data = { accesstoken:this.store.user.accesstoken } ;
+        let data = { accesstoken:this.store.user.user.token } ;
         return http.get({
             url:`${url}${id}`,
             data
         }).then((res)=>{
             this._topic = res.data ;
+        });
+    }
+    @action.bound
+    async refreshReply(){
+        let topicId = this.topic.id ;
+        await this.getTopicById(topicId) ;
+    }
+    @action.bound
+    async reply(parmas){
+        let topicId = this.topic.id ;
+        let url = this.store.url.topic_reply.replace(":topic_id",topicId) ;
+        let accesstoken = this.store.user.user.token ;
+        let content = parmas.content + this.store.common.tail ;
+        let data = { ...parmas,content , accesstoken } ;
+        let http = this.store.http ;
+        return await http.post({
+            url:url,
+            data
         });
     }
     @action.bound

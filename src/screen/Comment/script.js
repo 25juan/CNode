@@ -40,11 +40,17 @@ const style = `<style>
         }
         .markdown-text .topics_sub{
             font-size: 12px;
-            margin-top: 7px;
+            margin:  10px 0;
             font-weight: bold;
         }
-        .topics_sub.authorname *{
+        .topics_sub{
             color: #999699;
+        }
+        .reply{
+            padding: 0  10px;
+        }
+        .markdown-text .text-link{
+            color: #337ab7;
         }
     </style>`;
 const renderComment = (comment, index) => {
@@ -61,6 +67,9 @@ const renderComment = (comment, index) => {
                     </div>
                     <div>
                         <p class="topics_sub"><span class="good">👍</span> ${comment.upsCount}</p>
+                    </div>
+                    <div class="reply" id="reply" onclick="reply('${comment.id}','${comment.authorName}')">
+                        <p class="topics_sub"><span class="text-link">回复</span></p>
                     </div>
                 </div>
                 <div class="comment-content-textarea">
@@ -91,6 +100,9 @@ const script = `
     function init() {
       document.getElementById("header").onclick = showUser ;
       document.getElementById("name").onclick = showUser ;
+    }
+    function reply(id,authorName) {
+      postMsg("reply",{authorName:authorName,id:id});
     }
     init();
 </script>

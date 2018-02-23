@@ -5,10 +5,9 @@ import {
     View,
     Text,
     PixelRatio,
-    Platform,TouchableHighlight
+    Platform,TouchableHighlight,TouchableOpacity
 } from "react-native" ;
 import { Thumbnail,Icon } from "native-base" ;
-import moment from "moment" ;
 import Touchable from "../component/Touchable" ;
 const style = {
     border:{borderBottomWidth:1/PixelRatio.get(),borderBottomColor:"#ddd"},
@@ -29,30 +28,8 @@ const style = {
     topStyle:{color:"#80bd01",borderColor:"#80bd01"}
 } ;
 export class ListItem extends Component{
-    state = {
-        title:{color:"#333"},
-        subtitle:{color:"#999699"},
-        goodStyle:{},
-        topStyle:{}
-    } ;
-    _onShowUnderlay(){
-        this.setState({
-            title:{color:"#fff"},
-            subtitle:{color:"#fff"},
-            goodStyle:{color:"#fff"},
-            topStyle:{color:"#fff"},
-        });
-    }
-    _onHideUnderlay(){
-        this.setState({
-            title:{color:"#333"},
-            subtitle:{color:"#999699"},
-            topStyle:{},
-            goodStyle:{},
-        });
-    }
     render(){
-        let { theme ,topic ,onRightPress=()=>{} } = this.props ;
+        let { topic ,onRightPress=()=>{} } = this.props ;
         let {replyAt,title,authorUrl,authorName} = topic ;
         return (
             <View style={style.row}>
@@ -65,23 +42,23 @@ export class ListItem extends Component{
                     </View>
                 </View>
                 <View style={style.flex}>
-                    <TouchableHighlight onHideUnderlay={()=>this._onHideUnderlay()} onShowUnderlay={()=>this._onShowUnderlay()} underlayColor={theme.touchableBackgroundColor}  onPress={()=>onRightPress()}>
+                    <TouchableOpacity onPress={()=>onRightPress()}>
                         <View style={[style.column,style.border,style.info]}>
                             <View style={style.titleC}>
-                                <Text numberOfLines={2} style={[style.title,this.state.title]}>
+                                <Text numberOfLines={2} style={[style.title]}>
                                     {title}
                                 </Text>
                             </View>
                             <View style={style.row}>
                                 <View style={[style.row]}>
-                                    <Icon name={"ios-undo-outline"} style={[style.icon,this.state.subTitle]}/>
-                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subTitle]}>
+                                    <Icon name={"ios-undo-outline"} style={[style.icon]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle]}>
                                         { replyAt }
                                     </Text>
                                 </View>
                             </View>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -95,24 +72,8 @@ export default class extends Component{
         goodStyle:{},
         topStyle:{}
     } ;
-    _onShowUnderlay(){
-        this.setState({
-            title:{color:"#fff"},
-            subtitle:{color:"#fff"},
-            goodStyle:{color:"#fff"},
-            topStyle:{color:"#fff"},
-        });
-    }
-    _onHideUnderlay(){
-        this.setState({
-            title:{color:"#333"},
-            subtitle:{color:"#999699"},
-            topStyle:{},
-            goodStyle:{},
-        });
-    }
     render(){
-        let { theme ,topic ,onLeftPress=()=>{},onRightPress=()=>{} } = this.props ;
+        let { topic ,onLeftPress=()=>{},onRightPress=()=>{} } = this.props ;
         let { good,top,title,before,visitCount,replyCount,authorUrl,authorName } = topic ;
         return (
             <View style={style.row}>
@@ -127,35 +88,35 @@ export default class extends Component{
                     </Touchable>
                 </View>
                 <View style={style.flex}>
-                    <TouchableHighlight onHideUnderlay={()=>this._onHideUnderlay()} onShowUnderlay={()=>this._onShowUnderlay()} underlayColor={theme.touchableBackgroundColor}  onPress={()=>onRightPress()}>
+                    <TouchableOpacity onPress={()=>onRightPress()}>
                         <View style={[style.column,style.border,style.info]}>
                             <View style={style.titleC}>
-                                <Text numberOfLines={2} style={[style.title,this.state.title]}>
+                                <Text numberOfLines={2} style={[style.title]}>
                                     {title}
                                 </Text>
                             </View>
                             <View style={style.row}>
                                 <View style={[style.flex,style.row]}>
-                                    <Icon name={"ios-calendar-outline"} style={[style.icon,this.state.subtitle]}/>
-                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>
+                                    <Icon name={"ios-calendar-outline"} style={[style.icon]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle]}>
                                         { before }
                                     </Text>
                                 </View>
                                 <View style={[style.flex,style.row]}>
-                                    <Icon name={"ios-eye-outline"} style={[style.icon,this.state.subtitle]}/>
-                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>{visitCount}</Text>
+                                    <Icon name={"ios-eye-outline"} style={[style.icon]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle]}>{visitCount}</Text>
                                 </View>
                                 <View style={[style.flex,style.row]}>
-                                    <Icon name={"ios-chatboxes-outline"} style={[style.icon,this.state.subtitle]}/>
-                                    <Text numberOfLines={1} style={[style.subTitle,this.state.subtitle]}>{replyCount}</Text>
+                                    <Icon name={"ios-chatboxes-outline"} style={[style.icon]}/>
+                                    <Text numberOfLines={1} style={[style.subTitle]}>{replyCount}</Text>
                                 </View>
                             </View>
                             <View style={[style.labelC]}>
-                                {good && <Text numberOfLines={1} style={[style.label,style.topStyle,this.state.topStyle]}>{"顶"}</Text>}
-                                { top && <Text numberOfLines={1} style={[style.label,style.goodStyle,this.state.goodStyle]}>{"精"}</Text> }
+                                {good && <Text numberOfLines={1} style={[style.label,style.topStyle]}>{"顶"}</Text>}
+                                { top && <Text numberOfLines={1} style={[style.label,style.goodStyle]}>{"精"}</Text> }
                             </View>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         )

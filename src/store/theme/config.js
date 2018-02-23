@@ -11,14 +11,14 @@ export default (color) =>{
     const rcColor = MAINCOLOR ; //单复选框的颜色
     const activeTintColor = MAINCOLOR ;
     const headerBackgroundColor = MAINCOLOR ;
-    const statusBarColor = COLOR.darken(0.3) ;
     const switchCircleColor = "#eee" ;
     const tabBackgroundColor = MAINCOLOR ;
     const inActiveTabTextColor = "#333";
     const activeTabTextColor = "#fff" ;
     const touchableBackgroundColor = COLOR.lighten(0.7) ;
     const tabBarUnderlineColor = COLOR.darken(0.4) ;
-    const iosBarStyle = COLOR.isDark()?"light-content":"dark-content"; //light-content or
+    const statusBarColor = COLOR.darken(0.3) ;
+    const barStyle = statusBarColor.isDark()?"light-content":"dark-content"; //light-content or
     const inactiveTintColor = "#bbb";
     const headerTextColor = "#fff";
     const loadingColor = "#fff" ;
@@ -36,7 +36,7 @@ export default (color) =>{
         inactiveTintColor,
         headerBackgroundColor,
         headerTextColor,
-        iosBarStyle,
+        barStyle,
         loadingColor,
         loadingBackgroundColor,
         rcColor,

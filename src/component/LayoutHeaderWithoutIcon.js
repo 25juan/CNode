@@ -17,7 +17,7 @@ import Color from "color";
 export const CHeader = ({theme,children})=>{
     return (
         <Header
-            iosBarStyle={theme.iosBarStyle}
+            iosBarStyle={theme.barStyle}
             androidStatusBarColor={theme.statusBarColor}
             style={{backgroundColor:theme.headerBackgroundColor}}>
             { children }

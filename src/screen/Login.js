@@ -1,6 +1,6 @@
 import React,{ Component } from "react" ;
 import {Linking, View} from "react-native" ;
-import { HeaderWithBackIcon } from "../component/LayoutHeaderWithoutIcon"
+import { HeaderWithBackIcon } from "../component/Header"
 import { Container,Content,Form,Item,Label,Input,Button,Icon,Row,Text } from "native-base" ;
 import {inject,observer  } from "mobx-react" ;
 import { observable } from "mobx" ;

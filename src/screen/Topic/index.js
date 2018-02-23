@@ -6,7 +6,7 @@ import { Share,Linking,View } from "react-native";
 import { Col,Right,Button,Icon,Text,Fab  } from "native-base";
 import url from "../../store/url" ;
 import injectScript from "./script" ;
-import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
+import { HeaderWithBackIcon as Header } from "../../component/Header";
 import {
     observer,
     inject

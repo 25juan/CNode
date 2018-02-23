@@ -1,7 +1,7 @@
 import React,{
     Component
 } from "react" ;
-import LayoutHeaderWithoutIcon from "../component/LayoutHeaderWithoutIcon";
+import LayoutHeaderWithoutIcon from "../component/Header";
 import TopicList from "./TopicList" ;
 import {
     observer,

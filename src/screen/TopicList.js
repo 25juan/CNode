@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import ScrollViewLoading  from "../component/ScrollViewLoading" ;
 import ListItem from "../component/ListItem";
-import LayoutHeaderWithoutIcon from "../component/LayoutHeaderWithoutIcon" ;
+import LayoutHeaderWithoutIcon from "../component/Header" ;
 import {
     observer,
     inject

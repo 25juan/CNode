@@ -2,7 +2,7 @@ import React,{
     Component
 } from "react" ;
 import TopicList from "./TopicList" ;
-import LayoutHeaderWithoutIcon from "../component/LayoutHeaderWithoutIcon" ;
+import LayoutHeaderWithoutIcon from "../component/Header" ;
 import {
     observer,
     inject

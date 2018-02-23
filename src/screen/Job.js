@@ -4,7 +4,7 @@ import React,{
 import {
     Text
 } from "react-native";
-import LayoutHeaderWithoutIcon from "../component/LayoutHeaderWithoutIcon";
+import LayoutHeaderWithoutIcon from "../component/Header";
 import TopicList from "./TopicList" ;
 import {
     observer,

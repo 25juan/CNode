@@ -1,5 +1,5 @@
 import React,{ Component } from "react" ;
-import { HeaderWithBackIcon as Header } from "../../component/LayoutHeaderWithoutIcon";
+import { HeaderWithBackIcon as Header } from "../../component/Header";
 import { Col,Right,Button,Icon,Text,Fab,Container  } from "native-base";
 import {
     observer,

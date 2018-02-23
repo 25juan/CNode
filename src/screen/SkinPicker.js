@@ -6,7 +6,7 @@ import {
     Alert
 } from "react-native" ;
 import { Container,Content,List,ListItem } from "native-base" ;
-import { HeaderWithBackIcon } from "../component/LayoutHeaderWithoutIcon" ;
+import { HeaderWithBackIcon } from "../component/Header" ;
 import {
     observer,inject
 } from "mobx-react/native" ;

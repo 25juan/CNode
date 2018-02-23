@@ -3,7 +3,7 @@ import { View,Platform,ScrollView } from "react-native" ;
 import { Container,Button,Icon,Content,Form, Item, Input, Label,Picker } from "native-base" ;
 import { observer,inject } from "mobx-react/native" ;
 import { observable } from "mobx" ;
-import {HeaderWithBackIcon} from "../component/LayoutHeaderWithoutIcon" ;
+import {HeaderWithBackIcon} from "../component/Header" ;
 import  Toast from "react-native-easy-toast" ;
 import _ from "lodash" ;
 import Loading from "../component/Loading" ;

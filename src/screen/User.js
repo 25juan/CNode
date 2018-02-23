@@ -79,6 +79,7 @@ export default class extends Component {
                             style={{backgroundColor:theme.listViewBackgroundColor}}
                             data={user.recentReplies}
                             keyExtractor={(item)=>item.id}
+                            onEndReachedThreshold={1}
                             refreshing={false}
                             initialNumToRender={6}
                             renderItem={({item}) =><ListItem theme={theme} onRightPress={()=>this.showArticle(item.id)} topic={item}/>}
@@ -89,6 +90,7 @@ export default class extends Component {
                         <FlatList
                             style={{backgroundColor:theme.listViewBackgroundColor}}
                             data={user.recentTopics}
+                            onEndReachedThreshold={1}
                             keyExtractor={(item)=>item.id}
                             refreshing={false}
                             initialNumToRender={6}
@@ -101,6 +103,7 @@ export default class extends Component {
                             style={{backgroundColor:theme.listViewBackgroundColor}}
                             data={user.collectTopics}
                             keyExtractor={(item)=>item.id}
+                            onEndReachedThreshold={1}
                             refreshing={false}
                             initialNumToRender={6}
                             renderItem={({item}) =><ListItemT theme={theme} onRightPress={()=>this.showArticle(item.id)} topic={item}/>}

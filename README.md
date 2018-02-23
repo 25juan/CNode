@@ -90,9 +90,9 @@ A: 将 ```android\gradle\wrapper\gradle-wrapper.properties``` 上面的文件通
 #### Q: ios下配置启动图标和启动屏之后运行`react-native run-ios`没有生效?
 A: 删除项目 ```ios``` 文件夹下的build 文件夹，当通过xcode 改变了底层的代码的时候，如：app 图标，app 的启动屏应该重新build 
 ##### Q: 滚动渲染数据列表的时候比较卡?
-A: 在渲染长数据列表的时候应该尽量使用`FlatList` 组件，并且设置`initialNumToRender = {10}`属性。这样在页面加载的时候就只会渲染10条数据。在后续的滚动中会执行滚动渲染，不是把所有的数据渲染出来。
+A: 在渲染长数据列表的时候应该尽量使用`FlatList` 组件，并且设置`initialNumToRender = {10}`属性。这样在页面加载的时候就只会渲染10条数据。在后续的滚动中会执行滚动渲染，不是把所有的数据渲染出来。
 ##### Q: `FlatList` 和`react-navigation`一起使用很卡?
-A: 在渲染数据列表的时候。不要把 `FlatList`的`onEndReachedThreshold`的值设置得太大了，设置为1即可。否则会影响整个应用的性能。
+A: 在渲染数据列表的时候。不要把 `FlatList`的`onEndReachedThreshold`的值设置得太大了，设置为1即可。否则会影响整个应用的性能。
 
 
 

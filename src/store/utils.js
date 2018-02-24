@@ -47,6 +47,7 @@ export default class {
             obj.link = share+v.id ;
             obj.before = moment(v["last_reply_at"]).fromNow() ;
             obj.comments = this.parseComments(v.replies||[]) ;
+            obj.isCollect = v["is_collect"] ;
             return obj ;
         });
         return data;

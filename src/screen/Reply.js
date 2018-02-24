@@ -22,16 +22,15 @@ export default class extends Component{
     }
     async submit(){
         let { id,authorName="" } = this.props.navigation.state.params;
-        let { reply,refreshReply } = this.props.topic ;
-        let prefix = authorName?`[@${authorName}](/user/${authorName})`:"" ;
-        let parmas = { reply_id:id,content: `${prefix}${this.text}`} ;
-        let data = await reply(parmas);
+        let { reply,refreshTopic } = this.props.topic ;
+        let parmas = { reply_id:id,content: `${this.text}`} ;
+        let data = await reply(parmas,authorName);
         if(data && data.success){
             // 执行刷新评论逻辑
             Alert.alert("提示","评论成功",[{
                 text: '确定', onPress: () => this.back()
             }]);
-            await refreshReply();
+            await refreshTopic();
 
         }
     }

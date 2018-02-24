@@ -6,7 +6,6 @@ import {
     observer,
     inject
 } from "mobx-react/native";
-import { observable } from "mobx" ;
 import injectScript from "./script" ;
 import SuperWebView from "../../component/WebView" ;
 @inject("common")
@@ -28,22 +27,22 @@ export default class extends Component{
         login?navigate("Reply",param):this.toast.show("请登录");
     }
     async refresh(){
-        let { refreshReply } = this.props.topic ;
-        await refreshReply();
+        let { refreshTopic } = this.props.topic ;
+        await refreshTopic();
         this.toast.show("数据刷新成功");
     }
     render(){
         let { theme ,markdownStyle} = this.props.common ;
-        let { replyCount=0,comments=[] } = this.props.navigation.state.params.topic ;
+        let { replyCount=0,comments=[] } = this.props.topic.topic ;
         let html = injectScript(comments,markdownStyle);
         return (
             <Container>
                 <Header onPress={()=>this.back()} title={ `评论（${replyCount}）` } theme={ theme }>
-                    <Button onPress={()=>this.reply()} transparent>
-                        <Icon style={{color:theme.headerTextColor}} name={"create"}/>
-                    </Button>
                     <Button onPress={async ()=> await this.refresh()} transparent>
                         <Icon style={{color:theme.headerTextColor}} name={"refresh"}/>
+                    </Button>
+                    <Button onPress={()=>this.reply()} transparent>
+                        <Icon style={{color:theme.headerTextColor}} name={"create"}/>
                     </Button>
                 </Header>
                 <SuperWebView

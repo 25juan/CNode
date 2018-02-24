@@ -6,8 +6,8 @@ const urls = {
     topic_update: "/topics/update", // 编辑主题 
     topic_detail: "/topic/", //主题详情 
     topic_collect: "/topic_collect/collect",//收藏主题 
-    topic_reply: "/topic/:topic_id/replies", // 主题评论 
     collect_del: "/topic_collect/de_collect", // 取消收藏 
+    topic_reply: "/topic/:topic_id/replies", // 主题评论 
     collect_list: "/topic_collect/",
     reply_up: `/reply/:id/ups`, // 为评论点赞 
     message_count: "/message/count", // 未读消息数目 

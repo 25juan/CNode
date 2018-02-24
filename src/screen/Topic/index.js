@@ -17,6 +17,7 @@ import Menu, { MenuItem } from 'react-native-material-menu';
 import Toast from "react-native-easy-toast" ;
 @inject("common")
 @inject("topic")
+@inject("user")
 @observer
 export default class Topic extends Component{
     toast = null;
@@ -50,6 +51,18 @@ export default class Topic extends Component{
             Linking.openURL(link);
         });
     }
+    async collect(){
+        let { login } = this.props.user;
+        let { collect } = this.props.topic;
+        if(login){
+            let result = await collect() ;
+            result.success && this.toast.show(result.msg);
+        }else {
+            this.toast.show("请登录");
+        }
+        this.hideMenu();
+
+    }
     hideMenu = () => {
         this.menu.hide();
     };
@@ -63,6 +76,8 @@ export default class Topic extends Component{
         let { theme , markdownStyle} = this.props.common ;
         let { topic } = this.props.topic ;
         let html  = injectScript(topic,markdownStyle);
+        let { isCollect }  = topic ;
+        let collect = isCollect?"取消收藏":"收藏" ;
         return (<Col>
                     <Header title={topic.authorName} onPress={()=>this.back()} theme={theme}>
                         <Button onPress={()=>this.share()} transparent>
@@ -78,7 +93,9 @@ export default class Topic extends Component{
                         >
                             <MenuItem onPress={()=>this.refresh()}>刷新</MenuItem>
                             <MenuItem onPress={()=>this.openBrowser()}>浏览器中打开</MenuItem>
-                            <MenuItem onPress={()=>this.hideMenu()}>收藏</MenuItem>
+                            <MenuItem onPress={async()=>await this.collect()}>
+                                {collect}
+                            </MenuItem>
                         </Menu>
                     </Header>
                     <SuperWebView theme={theme} html={html}/>
@@ -87,7 +104,7 @@ export default class Topic extends Component{
                         direction="up"
                         style={{backgroundColor: theme.FabColor}}
                         position="bottomRight"
-                        onPress={() =>this.props.navigation.navigate("Comment",{topic})}>
+                        onPress={() =>this.props.navigation.navigate("Comment")}>
                         <Icon name="chatbubbles"/>
                     </Fab>
                 </Col>)

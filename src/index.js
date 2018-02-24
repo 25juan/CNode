@@ -12,6 +12,7 @@ import Comment from "./screen/Comment";
 import WriteTopic from "./screen/WriteTopic" ;
 import Login from "./screen/Login" ;
 import Reply from "./screen/Reply" ;
+import Message from "./screen/Message";
 import {
     observer,
     inject
@@ -27,7 +28,8 @@ const Stack = StackNavigator({
     Comment:{screen:Comment},
     WriteTopic:{screen:WriteTopic},
     Login:{screen:Login},
-    Reply:{screen:Reply}
+    Reply:{screen:Reply},
+    Message:{screen:Message}
 });
 @inject("common")
 @observer

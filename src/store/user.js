@@ -55,7 +55,9 @@ export default class {
             data.accesstoken = accesstoken ;
             this._user = data ;
             storage.save({key: 'user',data: data}); //登录信息持久化
+            return true ;
         }
+        return false;
     }
     @action.bound
     deleteUser(){

@@ -29,7 +29,7 @@ const Stack = StackNavigator({
     WriteTopic:{screen:WriteTopic},
     Login:{screen:Login},
     Reply:{screen:Reply},
-    Message:{screen:Message}
+    Message:{screen:Message},
 });
 @inject("common")
 @observer

@@ -34,7 +34,6 @@ export default class extends Component{
         let { theme } = this.props.common ;
         let { user }   = this.props ;
         let tabStyle = {backgroundColor: theme.headerBackgroundColor};
-        console.log(user.notReadMessage)
         return  (
             <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
                 <HeaderWithBackIcon onPress={()=>this.back()} title={"我的消息"} theme={theme}/>

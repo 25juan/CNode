@@ -66,4 +66,20 @@ export default class {
         });
         return data ;
     }
+    parseMessage(list=[]){
+        if(typeof list.map !== "function"){
+            return [] ;
+        }
+        return list.map(v=>{
+            let obj = {} ;
+            let url = v.author?v.author.avatar_url :"";
+            obj.authorName = v.author?v.author.loginname:"" ;
+            obj.authorUrl = (/^https:|^http:/.test(url) ? url : "https:" + url)  ;
+            obj.title = v.topic.title ;
+            obj.id = v.topic.id ;
+            obj.messageId = v.id ;
+            obj.replyAt = moment(v.reply.create_at).fromNow() ;
+            return obj ;
+        })
+    }
 }

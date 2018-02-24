@@ -11,6 +11,27 @@ export default class {
         this.store = store ;
         storage.load({key: 'user'}).then((res)=>this._user = res).catch(()=>{});
     }
+    @observable
+    _notReadMessage = [] ;//未读消息
+    @observable
+    _readMessage = [] ;//已读消息
+    get notReadMessage(){
+        return this.store.utils.parseMessage(this._notReadMessage) ;
+    }
+    get readMessage(){
+        return this.store.utils.parseMessage(this._readMessage) ;
+    }
+    @action.bound
+    async getMessage(){
+        let url = this.store.url.message_list ;
+        let accesstoken = this.user.token ;
+        let result = await this.store.http.get({
+            url,
+            data:{accesstoken}
+        }) ;
+        this._readMessage = result.data.has_read_messages ;
+        this._notReadMessage = result.data.hasnot_read_messages ;
+    }
     @computed
     get login(){// 检测用户是否登录
         return !!this._user.id;

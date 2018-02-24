@@ -1,6 +1,6 @@
 const online = "https://cnodejs.org/api/v1";
 const mock = "http://rap.taobao.org/mockjsdata/30481";
-let dev = true;
+let dev = false;
 const urls = {
     topic_list: "/topics", // 主题列表、新规 
     topic_update: "/topics/update", // 编辑主题 

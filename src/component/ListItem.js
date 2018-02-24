@@ -29,17 +29,19 @@ const style = {
 } ;
 export class ListItem extends Component{
     render(){
-        let { topic ,onRightPress=()=>{} } = this.props ;
+        let { topic ,onRightPress=()=>{},onLeftPress=()=>{} } = this.props ;
         let {replyAt,title,authorUrl,authorName} = topic ;
         return (
             <View style={style.row}>
                 <View style={style.image}>
-                    <View>
-                        <Thumbnail square  source={{uri: authorUrl}} />
-                        <View style={style.user}>
-                            <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
+                    <Touchable onPress={()=>onLeftPress()}>
+                        <View>
+                            <Thumbnail square  source={{uri: authorUrl}} />
+                            <View style={style.user}>
+                                <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
+                            </View>
                         </View>
-                    </View>
+                    </Touchable>
                 </View>
                 <View style={style.flex}>
                     <TouchableOpacity onPress={()=>onRightPress()}>

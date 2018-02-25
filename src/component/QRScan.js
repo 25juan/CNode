@@ -1,6 +1,6 @@
 import React,{Component} from "react" ;
 import { RNCamera } from "react-native-camera" ;
-import { View,Animated } from "react-native" ;
+import { View,Animated,Easing } from "react-native" ;
 export default class QRScan extends Component {
     state = {
         y: new Animated.Value(0),          // 透明度初始值设为0
@@ -12,10 +12,17 @@ export default class QRScan extends Component {
         Animated.timing(
             this.state.y,
             {
-                toValue:200,
-                duration:2000
+                toValue:1,
+                duration:4000,
+                easing: Easing.linear, //设置匀速运动
             }
-        ).start();
+        ).start(()=>{
+           this.setState({ //这里需要知道setState是异步的
+               y:new Animated.Value(0)
+           },()=>{
+              this.animateStart();
+           });
+        });
     }
     render(){
         let onBarCodeRead = this.props.onBarCodeRead||(()=>{});
@@ -37,7 +44,10 @@ export default class QRScan extends Component {
                     <View style={[style.rightBottom,style.base,borderColor]}/>
                     <View style={[style.leftBottom,style.base,borderColor]}/>
                     <Animated.View style={[style.line,backgroundColor,{
-                        top:this.state.y,
+                        top:this.state.y.interpolate({
+                            inputRange: [0, 0.25, 0.5, 0.75, 1],
+                            outputRange: [0,100, 200,100,0],
+                        }),
                     }]}/>
                 </View>
             </RNCamera>

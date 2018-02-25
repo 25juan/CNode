@@ -27,9 +27,6 @@ export default class SuperWebView extends Component {
             }
         })
     }
-    openImage(url) {
-        console.log(url);
-    }
     render() {
         let { html ,theme} = this.props;
         let  renderHtml = injectScript(html);

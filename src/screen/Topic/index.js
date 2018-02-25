@@ -72,6 +72,9 @@ export default class Topic extends Component{
     back(){
         this.props.navigation.goBack();
     }
+    openImage(url) {
+        this.props.navigation.navigate("Image",{ url });
+    }
     render(){
         let { theme , markdownStyle} = this.props.common ;
         let { topic } = this.props.topic ;
@@ -98,7 +101,7 @@ export default class Topic extends Component{
                             </MenuItem>
                         </Menu>
                     </Header>
-                    <SuperWebView theme={theme} html={html}/>
+                    <SuperWebView openImage={(e)=>this.openImage(e)} theme={theme} html={html}/>
                     <Toast ref={(toast)=>this.toast = toast}/>
                     <Fab
                         direction="up"

@@ -1,9 +1,10 @@
 import React,{ Component } from "react" ;
-import { View,Image,Dimensions,CameraRoll } from "react-native" ;
+import { View,Image,Dimensions,Platform,CameraRoll } from "react-native" ;
 import { HeaderWithBackIcon } from "../component/Header" ;
 import { Container,Content,Form,Item,Label,Input,Button,Icon,Row,Text } from "native-base" ;
 import {inject,observer  } from "mobx-react" ;
 import Toast  from "react-native-easy-toast" ;
+import RNFetchBlob from 'react-native-fetch-blob'
 @inject("common")
 @observer
 export default class extends Component{
@@ -14,12 +15,20 @@ export default class extends Component{
     }
     download(){
         let uri = this.props.navigation.state.params.url ;
-        CameraRoll.saveToCameraRoll(uri).then((res)=>{
-            this.toast.show(`图片保存成功,路径 ${res}`) ;
-        }).catch((error)=>{
-            this.toast.show(`图片保存失败`) ;
-            console.log(error)
-        })
+        RNFetchBlob
+            .config({fileCache : true,appendExt : 'png'})
+            .fetch('GET',uri)
+            .then((res) => {
+                let path =Platform.OS === 'android'? 'file://' + res.path() : '' + res.path() ;
+                CameraRoll.saveToCameraRoll(path).then((res)=>{
+                    this.toast.show(`图片保存成功,路径 ${res}`) ;
+                }).catch((error)=>{
+                    this.toast.show(`图片保存失败`) ;
+                    console.log(error)
+                });
+            }).catch((error)=>{
+                this.toast.show(`图片保存失败`) ;
+            });
     }
     render(){
         let uri = this.props.navigation.state.params.url ;

@@ -18,6 +18,7 @@
     "react-native": "0.52.1",
     "react-native-camera": "^1.0.1",
     "react-native-easy-toast": "^1.0.9",
+    "react-native-fetch-blob": "^0.10.8",
     "react-native-material-menu": "^0.2.4",
     "react-native-splash-screen": "^3.0.6",
     "react-native-storage": "^0.2.2",

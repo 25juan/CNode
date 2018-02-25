@@ -71,6 +71,8 @@ export default class Topic extends Component{
     };
     back(){
         this.props.navigation.goBack();
+        let { resetTopic } = this.props.topic ;
+        resetTopic();
     }
     openImage(url) {
         this.props.navigation.navigate("Image",{ url });

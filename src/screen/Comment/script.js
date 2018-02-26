@@ -57,13 +57,13 @@ const renderComment = (comment, index) => {
     return `<div class="markdown-text">
         <input type="hidden" id="authorName" value="${comment.authorName}">
         <div class="row row_container">
-            <div id="header">
+            <div class="header" onclick="showUser()">
                 <img class="user-header-image" src="${comment.authorUrl}" alt="cnode">
             </div>
             <div class="flex comment-content">
                 <div class="row">
                     <div class="flex ">
-                        <p id="name" class="topics_sub authorname">${comment.authorName}</p>
+                        <p onclick="showUser()" class="name" class="topics_sub authorname">${comment.authorName}</p>
                     </div>
                     <div>
                         <p class="topics_sub"><span class="good">👍</span> ${comment.upsCount}</p>
@@ -96,10 +96,6 @@ const script = `
     function showUser(user){
         var user = document.getElementById("authorName").value ;
         postMsg("showUser",user);
-    }
-    function init() {
-      document.getElementById("header").onclick = showUser ;
-      document.getElementById("name").onclick = showUser ;
     }
     function reply(id,authorName) {
       postMsg("reply",{authorName:authorName,id:id});

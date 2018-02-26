@@ -24,12 +24,12 @@ export const CHeader = ({theme,children})=>{
         </Header>
     )
 }
-export const HeaderWithBackIcon = ({theme,children=[],title,onPress=()=>{}})=>{
+export const HeaderWithBackIcon = ({theme,children=[],title,onPress=()=>{},style})=>{
     return (
         <Header
             iosBarStyle={theme.iosBarStyle}
             androidStatusBarColor={theme.statusBarColor}
-            style={{backgroundColor:theme.headerBackgroundColor}}>
+            style={[{backgroundColor:theme.headerBackgroundColor},style]}>
             <Left>
                 <Button onPress={()=>onPress()} transparent>
                     <Icon style={{color:theme.headerTextColor}} android={"md-arrow-back"} ios={"ios-arrow-back-outline"}/>

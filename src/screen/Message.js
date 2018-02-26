@@ -36,7 +36,7 @@ export default class extends Component{
         let tabStyle = {backgroundColor: theme.headerBackgroundColor};
         return  (
             <Container style={{backgroundColor:theme.listViewBackgroundColor}}>
-                <HeaderWithBackIcon onPress={()=>this.back()} title={"我的消息"} theme={theme}/>
+                <HeaderWithBackIcon onPress={()=>this.back()} title={"我的消息"} theme={theme} style={{elevation:0}}/>
                     <Tabs tabBarUnderlineStyle={{backgroundColor: theme.tabBarUnderlineColor}} tabBarPosition={"top"}>
                         <Tab activeTextStyle={style.activeTextStyle} textStyle={style.tabTxt} activeTabStyle={tabStyle}
                              tabStyle={tabStyle} heading={"未读消息"}>

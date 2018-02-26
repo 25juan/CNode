@@ -98,8 +98,12 @@ export default class {
         return result ;
     }
     @action.bound
-    reset(){ //重置所有参数
+    reset(){ //重置用户信息参数
         this._user = { ...base } ;
+    }
+    @action.bound
+    resetTopic(){//重置主题参数
+        this._topic = {} ;
     }
 
 

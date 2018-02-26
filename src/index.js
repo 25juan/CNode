@@ -13,6 +13,7 @@ import WriteTopic from "./screen/WriteTopic" ;
 import Login from "./screen/Login" ;
 import Reply from "./screen/Reply" ;
 import Message from "./screen/Message";
+import Image from "./screen/Image" ;
 import {
     observer,
     inject
@@ -30,6 +31,7 @@ const Stack = StackNavigator({
     Login:{screen:Login},
     Reply:{screen:Reply},
     Message:{screen:Message},
+    Image:{screen:Image}
 });
 @inject("common")
 @observer

@@ -82,7 +82,8 @@ export default class extends Component{
         )
     }
     renderLoginQR(){
-        return  <QRScan onBarCodeRead={(e)=>this.onBarCodeRead(e)}/>
+        let { theme } = this.props.common ;
+        return  <QRScan theme={ theme } onBarCodeRead={(e)=>this.onBarCodeRead(e)}/>
     }
     onBarCodeRead(e){
         if(this.loading){

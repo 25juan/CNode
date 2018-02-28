@@ -22,6 +22,19 @@ export default class SkinPicker extends Component {
     setMarkdownTheme(theme){
         this.props.common.markdownStyle = theme ;
     }
+    eachAppTheme(){
+        let { theme,_theme,allTheme } = this.props.common ;
+        let list = [] ;
+        let appTheme = allTheme.appTheme ;
+        for(let i in appTheme){
+            list.push(<ListItem key={i}>
+                            <Radio color={theme.rcColor} label={appTheme[i].text}
+                            checked={(_theme === i)}
+                            onChange={() => this.setAppTheme(i)}/>
+                        </ListItem>);
+        }
+        return list ;
+    }
     render(){
         let { theme,_theme,_markdownStyle } = this.props.common ;
         return (
@@ -32,21 +45,7 @@ export default class SkinPicker extends Component {
                         <ListItem itemDivider>
                             <Text style={style.headerText}>应用主题设置</Text>
                         </ListItem>
-                        <ListItem >
-                            <Radio color={theme.rcColor} label='正常模式'
-                                   checked={(_theme ==="normal")}
-                                   onChange={() => this.setAppTheme("normal")}/>
-                        </ListItem>
-                        <ListItem>
-                            <Radio color={theme.rcColor} label='护眼模式'
-                                   checked={(_theme ==="dark")}
-                                   onChange={() =>  this.setAppTheme("dark")}/>
-                        </ListItem>
-                        <ListItem>
-                            <Radio color={theme.rcColor} label='春节红'
-                                   checked={(_theme ==="red")}
-                                   onChange={() =>  this.setAppTheme("red")}/>
-                        </ListItem>
+                        {this.eachAppTheme()}
                         <ListItem itemDivider>
                             <Text style={style.headerText}>文章主题设置</Text>
                         </ListItem>

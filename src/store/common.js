@@ -18,6 +18,8 @@ class Common {
         storage.load({key: 'markdownStyle'}).then((res)=>this._markdownStyle = res).catch(()=>{});
     }
     @observable
+    allTheme = theme ;
+    @observable
     networkError = false ;
     @observable
     _tail = true ;
@@ -39,7 +41,7 @@ class Common {
     _theme = "normal" ;
     @computed
     get theme(){ // 获取整个APP的颜色配置
-        return theme[this._theme] ;
+        return (theme.appTheme)[this._theme] ;
     }
     set theme(value){
         storage.save({key: 'theme',data: value});

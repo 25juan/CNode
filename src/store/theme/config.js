@@ -3,7 +3,7 @@
  * @param color
  */
 import Color from "color";
-export default (color) =>{
+export default (color,text) =>{
     const MAINCOLOR = color ;
     const COLOR = Color(MAINCOLOR) ;
     const FabColor = COLOR.darken(0.3) ;
@@ -24,6 +24,7 @@ export default (color) =>{
     const loadingColor = "#fff" ;
     const listViewBackgroundColor = "#fff" ;
     return {
+        text,
         MAINCOLOR,
         touchableBackgroundColor,
         listViewBackgroundColor,

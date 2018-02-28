@@ -19,6 +19,8 @@
     1. [react-native-camera](https://github.com/react-native-community/react-native-camera)
     1. [react-native-fetch-blob](https://github.com/wkh237/react-native-fetch-blob)
 
+1. [Android APK下载](https://pan.baidu.com/s/1qZnococ)  密码: i9uh
+
 1. 下载项目
     ###### `git clone git@github.com:25juan/CNode.git`
 1. 执行 yarn 命令安装项目运行所需要的包 

@@ -11,6 +11,7 @@ import {
     observer,inject
 } from "mobx-react/native" ;
 import Radio from '../component/Radio';
+import Touchable from "../component/Touchable" ;
 @inject("common")
 @inject("topics")
 @observer
@@ -27,11 +28,14 @@ export default class SkinPicker extends Component {
         let list = [] ;
         let appTheme = allTheme.appTheme ;
         for(let i in appTheme){
-            list.push(<ListItem key={i}>
-                            <Radio color={theme.rcColor} label={appTheme[i].text}
-                            checked={(_theme === i)}
-                            onChange={() => this.setAppTheme(i)}/>
-                        </ListItem>);
+            list.push(
+                <Touchable onPress={()=>this.setAppTheme(i)} key={i}>
+                    <ListItem >
+                        <Radio color={theme.rcColor} label={appTheme[i].text}
+                               checked={(_theme === i)}
+                               onChange={() => {}}/>
+                    </ListItem>
+                </Touchable>);
         }
         return list ;
     }
@@ -49,16 +53,21 @@ export default class SkinPicker extends Component {
                         <ListItem itemDivider>
                             <Text style={style.headerText}>文章主题设置</Text>
                         </ListItem>
-                        <ListItem >
-                            <Radio color={theme.rcColor} label='正常模式'
-                                   checked={_markdownStyle === "markdown_light"}
-                                   onChange={() => this.setMarkdownTheme("markdown_light")}/>
-                        </ListItem>
-                        <ListItem>
-                            <Radio color={theme.rcColor} label='护眼模式'
-                                   checked={_markdownStyle === "markdown_dark"}
-                                   onChange={() => this.setMarkdownTheme("markdown_dark")}/>
-                        </ListItem>
+                        <Touchable onPress={()=>this.setMarkdownTheme("markdown_light")} >
+                            <ListItem >
+                                <Radio color={theme.rcColor} label='正常模式'
+                                       checked={_markdownStyle === "markdown_light"}
+                                       onChange={() => {}}/>
+                            </ListItem>
+                        </Touchable>
+                        <Touchable onPress={()=>this.setMarkdownTheme("markdown_dark")}>
+                            <ListItem>
+                                <Radio color={theme.rcColor} label='护眼模式'
+                                       checked={_markdownStyle === "markdown_dark"}
+                                       onChange={() => {}}/>
+                            </ListItem>
+                        </Touchable>
+
                     </List>
                 </Content>
             </Container>

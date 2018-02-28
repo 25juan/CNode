@@ -41,7 +41,7 @@ export default class StackScreen extends Component {
         setTimeout(()=>{
             SplashScreen.hide();
             this.showError();
-        },3000);
+        },1000);
     }
     componentWillReact(){
         this.showError();

@@ -55,6 +55,7 @@ export default class {
     }
     @action.bound
     getTopicById(id){ //获取主题详情
+        this.resetTopic();
         let url = this.store.url.topic_detail ;
         let http = this.store.http ;
         let data = { accesstoken:this.store.user.user.token } ;

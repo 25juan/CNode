@@ -52,8 +52,8 @@
 <img   src="./document/image/android/detail2.jpg" >
 <img   src="./document/image/android/theme.jpg" >
 <img   src="./document/image/android/user.jpg" >
+
 #### IOS
-<img  src="./document/image/ios/ask.png" >
 <img   src="./document/image/ios/job.png" >
 <img   src="./document/image/ios/mine.png" >
 <img   src="./document/image/ios/detail.png" >

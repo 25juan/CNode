@@ -33,7 +33,7 @@ export default class SkinPicker extends Component {
                     <ListItem >
                         <Radio color={theme.rcColor} label={appTheme[i].text}
                                checked={(_theme === i)}
-                               onChange={() => {}}/>
+                               onChange={() => {this.setAppTheme(i)}}/>
                     </ListItem>
                 </Touchable>);
         }
@@ -57,14 +57,14 @@ export default class SkinPicker extends Component {
                             <ListItem >
                                 <Radio color={theme.rcColor} label='正常模式'
                                        checked={_markdownStyle === "markdown_light"}
-                                       onChange={() => {}}/>
+                                       onChange={() => {this.setMarkdownTheme("markdown_light")}}/>
                             </ListItem>
                         </Touchable>
                         <Touchable onPress={()=>this.setMarkdownTheme("markdown_dark")}>
                             <ListItem>
                                 <Radio color={theme.rcColor} label='护眼模式'
                                        checked={_markdownStyle === "markdown_dark"}
-                                       onChange={() => {}}/>
+                                       onChange={() => {this.setMarkdownTheme("markdown_dark")}}/>
                             </ListItem>
                         </Touchable>
 

@@ -725,7 +725,7 @@ export default `
         .markdown-text .title{
             text-align:left;
             font-size:24px ;
-            color: rgba(0,0,0,.6);
+            color: rgba(255,255,255,.9);
         }
         .markdown-text .topics_info{
             display:flex ;
@@ -734,7 +734,7 @@ export default `
             flex:1 1 auto ;
         }
         .markdown-text .topics_sub{
-            color: #999699;
+            color: #fff;
         }
         .btn-container{
             padding: 15px 5px;

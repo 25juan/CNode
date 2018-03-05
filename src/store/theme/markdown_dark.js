@@ -748,7 +748,7 @@ export default `
             border: none;
             border-radius:4px ;
             text-decoration: none;
-            padding: 7px 12px;
+            padding: 10px 12px;
             font-size: 14px;
         }
         .btn-primary{

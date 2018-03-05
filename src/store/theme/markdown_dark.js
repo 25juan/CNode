@@ -749,7 +749,7 @@ export default `
             border-radius:4px ;
             text-decoration: none;
             padding: 10px 12px;
-            font-size: 14px;
+            font-size: 18px;
         }
         .btn-primary{
             background-color: #5cb85c;

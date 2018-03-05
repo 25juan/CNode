@@ -57,7 +57,7 @@ const renderComment = (comment, index) => {
     return `<div class="markdown-text">
         <input type="hidden" id="authorName" value="${comment.authorName}">
         <div class="row row_container">
-            <div class="header" onclick="showUser()">
+            <div onclick="showUser()">
                 <img class="user-header-image" src="${comment.authorUrl}" alt="cnode">
             </div>
             <div class="flex comment-content">

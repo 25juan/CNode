@@ -25,7 +25,8 @@ const style = {
     labelC:{position:"absolute",bottom:15,right:0,flexDirection:"row"},
     label:{borderWidth:1,fontWeight:"bold",marginRight:5,paddingHorizontal:10,paddingVertical:2,transform:[{rotateZ:"45deg"}]},
     goodStyle:{color:"red",borderColor:"red"},
-    topStyle:{color:"#80bd01",borderColor:"#80bd01"}
+    topStyle:{color:"#80bd01",borderColor:"#80bd01"},
+    border:{borderRadius:4}
 } ;
 export class ListItem extends Component{
     render(){
@@ -36,7 +37,7 @@ export class ListItem extends Component{
                 <View style={style.image}>
                     <Touchable onPress={()=>onLeftPress()}>
                         <View>
-                            <Thumbnail square  source={{uri: authorUrl}} />
+                            <Thumbnail style={style.border} square  source={{uri: authorUrl}} />
                             <View style={style.user}>
                                 <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
                             </View>
@@ -76,7 +77,7 @@ export default class extends Component{
                 <View style={style.image}>
                     <Touchable onPress={()=>onLeftPress()}>
                         <View>
-                            <Thumbnail square  source={{uri: authorUrl}} />
+                            <Thumbnail style={style.border} square  source={{uri: authorUrl}} />
                             <View style={style.user}>
                                 <Text numberOfLines={1} style={style.userText}>{authorName}</Text>
                             </View>

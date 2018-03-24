@@ -12,8 +12,22 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+def googlePlayServicesVersion = '11.8.0'
 
 allprojects {
+    configurations.all {
+        resolutionStrategy {
+          eachDependency { DependencyResolveDetails details ->
+            if (requested.group == 'com.google.android.gms') {
+              details.useVersion "$googlePlayServicesVersion"
+            }
+            if (requested.group == 'com.google.firebase') {
+              details.useVersion "$googlePlayServicesVersion"
+            }
+          }
+        }
+      }
+
     repositories {
         mavenLocal()
         jcenter()
